@@ -1,0 +1,399 @@
+use super::Executable;
+use crate::{common::handle_dataflow_result, session::DataflowSession};
+use dora_core::{
+    descriptor::DescriptorExt,
+    topics::{
+        DORA_COORDINATOR_PORT_WS_DEFAULT, DORA_DAEMON_LOCAL_LISTEN_PORT_DEFAULT,
+        DORA_DAEMON_LOCAL_LISTEN_PORT_ENV, DORA_ZENOH_CONFIG_OVERLAY_ENV, LOCALHOST, ZenohListen,
+    },
+};
+
+use dora_daemon::LogDestination;
+use eyre::Context;
+use std::{
+    collections::BTreeMap,
+    net::{IpAddr, SocketAddr},
+    path::PathBuf,
+};
+use tokio::runtime::Builder;
+use tracing::level_filters::LevelFilter;
+
+/// Parse `--worker-threads`, rejecting 0.
+///
+/// `tokio::runtime::Builder::worker_threads` asserts `val > 0` and would
+/// otherwise abort the daemon with a raw panic ("Worker threads cannot be set
+/// to 0"). Validating here turns that into a normal clap usage error.
+fn parse_worker_threads(s: &str) -> Result<usize, String> {
+    match s.parse::<usize>() {
+        Ok(0) => Err("worker threads must be at least 1".to_string()),
+        Ok(n) => Ok(n),
+        Err(err) => Err(err.to_string()),
+    }
+}
+
+#[derive(Debug, clap::Args)]
+/// Run daemon
+pub struct Daemon {
+    /// Unique identifier for the machine (required for distributed dataflows)
+    #[clap(long)]
+    machine_id: Option<String>,
+    /// Local listen port for event such as dynamic node.
+    #[clap(long, default_value_t = DORA_DAEMON_LOCAL_LISTEN_PORT_DEFAULT)]
+    local_listen_port: u16,
+    /// Address and port number of the dora coordinator
+    #[clap(long, short, default_value_t = LOCALHOST, env = "DORA_COORDINATOR_ADDR")]
+    coordinator_addr: IpAddr,
+    /// Port number of the coordinator WebSocket server
+    #[clap(long, default_value_t = DORA_COORDINATOR_PORT_WS_DEFAULT, env = "DORA_COORDINATOR_PORT")]
+    coordinator_port: u16,
+    #[clap(long, hide = true)]
+    run_dataflow: Option<PathBuf>,
+    /// Labels for this daemon (e.g. `--labels gpu=true,arch=arm64`).
+    /// Used for label-based node scheduling.
+    #[clap(long, value_parser = parse_labels)]
+    labels: Option<BTreeMap<String, String>>,
+    /// Shared inter-daemon Zenoh peer endpoint (e.g.
+    /// `tcp/192.168.1.1:5456`). When set, the daemon adds this to both
+    /// its Zenoh listen and connect endpoints; the first daemon to bind
+    /// it serves as the rendezvous for cross-daemon discovery, the rest
+    /// connect through it. Required when running multiple daemons in
+    /// environments without multicast (dev containers, hardened
+    /// networks, many CI runners). `dora cluster up` plumbs this from
+    /// the `zenoh_peer` field in cluster.yml.
+    #[clap(long, value_name = "ENDPOINT")]
+    zenoh_peer: Option<String>,
+    /// Open zenoh sessions without multicast scouting, for this daemon and the
+    /// nodes it spawns.
+    ///
+    /// Discovery then relies entirely on explicit endpoints — which is already
+    /// how the daemon reaches its nodes (it injects `DORA_ZENOH_CONNECT` into
+    /// each one) and, with `--zenoh-peer`, how daemons reach each other. Use it
+    /// where the scouting socket itself is the problem: a busy DDS/ROS2
+    /// multicast graph can keep zenoh from binding its scouting group, which
+    /// fails session startup outright.
+    ///
+    /// Safe for a multi-daemon setup as long as the daemons can reach the
+    /// coordinator: it hands each of them the endpoints of the daemons that
+    /// registered earlier, so they wire themselves without scouting. Only a
+    /// deployment that has no such path — daemons whose listeners are not
+    /// mutually dialable — still depends on multicast, and this would leave
+    /// those unable to find each other.
+    ///
+    /// Dynamic nodes need care too. They are started outside the daemon, so
+    /// they inherit neither its environment nor a `DORA_ZENOH_CONNECT`, and
+    /// scouting is symmetric — a dynamic node still scouting finds nothing once
+    /// the daemon has stopped answering. Export `DORA_ZENOH_CONNECT` (the
+    /// daemon's listen endpoint) for them yourself when using this flag.
+    #[clap(long)]
+    zenoh_no_multicast: bool,
+    /// Address, and optionally port, this daemon's Zenoh listener binds (e.g.
+    /// `--zenoh-listen 100.64.0.3` or `--zenoh-listen 100.64.0.3:5456`).
+    ///
+    /// Zenoh advertises the address it binds, and remote daemons dial exactly
+    /// that, so this is the address other daemons will use to reach this one.
+    /// By default it is derived from `--coordinator-addr`: loopback when the
+    /// coordinator is local (single-machine), otherwise the local address that
+    /// routes to the coordinator — which is the LAN address on a LAN and the
+    /// tunnel address on a mesh VPN such as Tailscale. Set this explicitly on a
+    /// multi-homed host that would otherwise advertise an interface the other
+    /// daemons cannot reach.
+    ///
+    /// Naming a port makes this daemon dialable *before* it has announced
+    /// anything, which is what `--zenoh-connect` on the other daemons needs.
+    /// Without one, the OS picks the port and peers can only learn it by
+    /// discovery. Bracket IPv6 when naming a port (`[fd7a:1::2]:5456`);
+    /// unbracketed, the trailing `:5456` reads as part of the address.
+    #[clap(long, value_name = "IP[:PORT]")]
+    zenoh_listen: Option<ZenohListen>,
+    /// Zenoh endpoints of the other daemons this one should dial (e.g.
+    /// `--zenoh-connect tcp/100.64.0.4:5456,tcp/100.64.0.5:5456`). Repeatable.
+    ///
+    /// Since zenoh 1.9, peers do not relay for each other: two daemons that
+    /// never form a direct link exchange nothing, with no fallback. Naming
+    /// every other daemon here establishes that clique by construction, with no
+    /// dependence on multicast or on gossip converging in time. Pair it with
+    /// `--zenoh-listen <IP>:<PORT>` so the peers dialing *this* daemon have an
+    /// endpoint they can predict.
+    ///
+    /// This is the mesh alternative to `--zenoh-peer`, which is a single shared
+    /// rendezvous every daemon both binds and dials, leaving the actual
+    /// daemon-to-daemon links to gossip.
+    #[clap(long, value_name = "ENDPOINT", value_delimiter = ',')]
+    zenoh_connect: Vec<String>,
+    /// JSON5 file of zenoh settings to layer on top of the configuration dora
+    /// computes, for this daemon and the nodes it spawns.
+    ///
+    /// Use it to point a deployment at zenoh routers you run yourself:
+    /// `{ connect: { endpoints: ["tcp/10.0.0.1:7447"] } }`. The two endpoint
+    /// lists (`connect.endpoints`, `listen.endpoints`) are *added* to dora's;
+    /// every other key replaces dora's value for that key.
+    ///
+    /// This is the additive counterpart to the `ZENOH_CONFIG` environment
+    /// variable, which builds the session entirely from its file — discarding
+    /// the direct node-to-node links the daemon plans, so same-machine traffic
+    /// ends up relayed through your router too. Setting both is an error.
+    #[clap(long, value_name = "PATH")]
+    zenoh_config_overlay: Option<PathBuf>,
+    /// Suppresses all log output to stdout.
+    #[clap(long)]
+    quiet: bool,
+    /// Allow shell nodes to execute arbitrary commands.
+    ///
+    /// Shell nodes are disabled by default for security reasons. This flag
+    /// sets the DORA_ALLOW_SHELL_NODES environment variable.
+    #[clap(long)]
+    allow_shell_nodes: bool,
+    /// Number of tokio worker threads (default: number of CPU cores).
+    #[clap(long, value_parser = parse_worker_threads)]
+    worker_threads: Option<usize>,
+    /// Enable real-time profile: mlockall + SCHED_FIFO priority.
+    /// Requires CAP_SYS_NICE + CAP_IPC_LOCK capabilities.
+    /// Warning: SCHED_FIFO applies to the main thread only (tokio workers
+    /// are not promoted). Use with care — see docs/realtime-tuning.md.
+    #[clap(long)]
+    rt: bool,
+}
+
+impl Executable for Daemon {
+    fn execute(self) -> eyre::Result<()> {
+        if self.allow_shell_nodes {
+            // SAFETY: Called before spawning any threads (tokio runtime not yet built),
+            // so there are no concurrent reads of environment variables.
+            unsafe { std::env::set_var("DORA_ALLOW_SHELL_NODES", "true") };
+        }
+        // Export the listen port so dynamic nodes (and spawned child processes)
+        // can discover it via env var.
+        // SAFETY: Called before the tokio runtime is built (no threads yet).
+        unsafe {
+            std::env::set_var(
+                DORA_DAEMON_LOCAL_LISTEN_PORT_ENV,
+                self.local_listen_port.to_string(),
+            );
+        }
+        // Exported rather than passed down: the nodes this daemon spawns
+        // inherit it, so one flag configures the whole process tree the same
+        // way `ZENOH_CONFIG` does.
+        if let Some(overlay) = &self.zenoh_config_overlay {
+            // SAFETY: as above — no threads yet.
+            unsafe { std::env::set_var(DORA_ZENOH_CONFIG_OVERLAY_ENV, overlay) };
+        }
+
+        let mut builder = Builder::new_multi_thread();
+        builder.enable_all();
+        if let Some(threads) = self.worker_threads {
+            builder.worker_threads(threads);
+        }
+        let rt = builder.build().context("tokio runtime failed")?;
+
+        // Apply real-time profile if requested.
+        //
+        // These diagnostics use `eprintln!` rather than `tracing::*` because
+        // the tracing subscriber is not yet installed at this point (see the
+        // `init_tracing_subscriber` call below) — `tracing::info!`/`warn!`
+        // calls before global subscriber registration route to
+        // `NoSubscriber` and are silently dropped (#1701). Going to stderr
+        // also ensures these are visible even with `--quiet`, which matters
+        // because a failed RT setup is an operational warning the user must
+        // see.
+        if self.rt {
+            #[cfg(unix)]
+            {
+                // Lock all memory to prevent page faults.
+                let lock_result = unsafe { libc::mlockall(libc::MCL_CURRENT | libc::MCL_FUTURE) };
+                if lock_result == 0 {
+                    eprintln!("RT: mlockall enabled (memory locked)");
+                } else {
+                    eprintln!(
+                        "RT: mlockall failed: {}. Ensure CAP_IPC_LOCK or ulimit -l unlimited.",
+                        std::io::Error::last_os_error()
+                    );
+                }
+
+                // Set SCHED_FIFO priority 50 (Linux only).
+                #[cfg(target_os = "linux")]
+                {
+                    // Use zeroed() + field set instead of struct literal
+                    // because musl libc's sched_param has extra POSIX
+                    // fields (sched_ss_*) that glibc doesn't expose
+                    // (dora-rs/adora#170).
+                    let mut param: libc::sched_param = unsafe { std::mem::zeroed() };
+                    param.sched_priority = 50;
+                    let sched_result =
+                        unsafe { libc::sched_setscheduler(0, libc::SCHED_FIFO, &param) };
+                    if sched_result == 0 {
+                        eprintln!("RT: SCHED_FIFO priority 50 enabled");
+                    } else {
+                        eprintln!(
+                            "RT: sched_setscheduler failed: {}. Ensure CAP_SYS_NICE.",
+                            std::io::Error::last_os_error()
+                        );
+                    }
+                }
+                // Note: the previous "(mlockall applied)" parenthetical here
+                // could lie on macOS where `mlockall` returns ENOTSUP, so the
+                // message now stands on its own.
+                #[cfg(not(target_os = "linux"))]
+                eprintln!("RT: SCHED_FIFO not available on this platform");
+            }
+            #[cfg(not(unix))]
+            eprintln!("RT: --rt flag is only supported on Unix systems");
+        }
+
+        #[cfg(feature = "tracing")]
+        let _guard = {
+            let _enter = rt.enter();
+
+            let name = "dora-daemon";
+            let filename = self
+                .machine_id
+                .as_ref()
+                .map(|id| format!("{name}-{id}"))
+                .unwrap_or(name.to_string());
+            let quiet = self.quiet;
+
+            let stdout_filter = if !quiet {
+                Some(std::env::var("RUST_LOG").unwrap_or("info".to_string()))
+            } else {
+                None
+            };
+
+            dora_tracing::init_tracing_subscriber(
+                name,
+                stdout_filter.as_deref(),
+                Some(&filename),
+                LevelFilter::INFO,
+            )
+            .context("failed to initialize tracing")?
+        };
+        rt.block_on(async {
+                match self.run_dataflow {
+                    Some(dataflow_path) => {
+                        tracing::info!("Starting dataflow `{}`", dataflow_path.display());
+                        if self.coordinator_addr != LOCALHOST {
+                            tracing::info!(
+                                "Not using coordinator addr {} as `run_dataflow` is for local dataflow only. Please use the `start` command for remote coordinator",
+                                self.coordinator_addr
+                            );
+                        }
+                        let mut dataflow_session =
+                            DataflowSession::read_session(&dataflow_path).context("failed to read DataflowSession")?;
+                        // Invalidate cached build metadata if the descriptor's
+                        // build-inputs changed since the last `dora build`.
+                        // Without this, the daemon would consume a stale
+                        // `build_id` and spawn nodes from the previous build's
+                        // artifacts (#1444).
+                        let dataflow_descriptor = dora_core::descriptor::Descriptor::blocking_read(&dataflow_path)
+                            .wrap_err_with(|| format!(
+                                "failed to read dataflow at `{}` for session fingerprinting",
+                                dataflow_path.display()
+                            ))?;
+                        let working_dir = dataflow_path
+                            .parent()
+                            .filter(|p| !p.as_os_str().is_empty())
+                            .unwrap_or_else(|| std::path::Path::new("."));
+                        let expanded = dataflow_descriptor
+                            .expand(working_dir)
+                            .wrap_err("failed to expand modules in dataflow descriptor")?;
+                        // `hub:` references are unresolved on disk; fingerprinting
+                        // resolves nodes, which rejects unresolved hub refs. Verify
+                        // the build is current and use its desugared descriptor.
+                        // Only a hub dataflow uses the desugared descriptor override,
+                        // and only then is the source-fingerprint staleness gate
+                        // meaningful — keep the two conditions aligned so a non-hub
+                        // file can never be run against a stale resolved descriptor.
+                        let (expanded, descriptor_override) = if expanded.nodes.iter().any(|n| n.hub.is_some()) {
+                            let resolved = dataflow_session.resolved_dataflow.clone().ok_or_else(|| {
+                                eyre::eyre!("this dataflow uses `hub:` nodes — run `dora build` first")
+                            })?;
+                            let current = DataflowSession::fingerprint_source(&expanded);
+                            if current.is_none() || current != dataflow_session.source_fingerprint {
+                                eyre::bail!("this dataflow changed since the last `dora build` — run `dora build` again");
+                            }
+                            (resolved.clone(), Some(resolved))
+                        } else {
+                            (expanded, None)
+                        };
+                        let resolved_for_fingerprint = expanded
+                            .resolve_aliases_and_set_defaults()
+                            .context("failed to resolve nodes for session fingerprint")?;
+                        if dataflow_session.invalidate_if_build_inputs_changed(&resolved_for_fingerprint) {
+                            dataflow_session
+                                .write_out_for_dataflow(&dataflow_path)
+                                .context("failed to persist invalidated dataflow session")?;
+                        }
+                        drop(resolved_for_fingerprint);
+
+                        let result = dora_daemon::Daemon::run_dataflow(&dataflow_path,
+                            dataflow_session.build_id, dataflow_session.local_build, dataflow_session.session_id, false,
+                            LogDestination::Tracing, None, None, false, None,
+                            descriptor_override,
+                        ).await?;
+                        handle_dataflow_result(result, None)
+                    }
+                    None => {
+                        dora_daemon::Daemon::run_with_zenoh_listen(
+                            SocketAddr::new(self.coordinator_addr, self.coordinator_port),
+                            self.machine_id,
+                            self.labels.unwrap_or_default(),
+                            self.local_listen_port,
+                            dora_daemon::ZenohOptions {
+                                inter_daemon_peer: self.zenoh_peer,
+                                listen: self.zenoh_listen,
+                                connect: self.zenoh_connect,
+                                disable_multicast: self.zenoh_no_multicast,
+                            },
+                        ).await
+                    }
+                }
+            })
+            .context("failed to run dora-daemon")
+    }
+}
+
+fn parse_labels(s: &str) -> Result<BTreeMap<String, String>, String> {
+    let mut map = BTreeMap::new();
+    for pair in s.split(',') {
+        let pair = pair.trim();
+        if pair.is_empty() {
+            continue;
+        }
+        let (k, v) = pair
+            .split_once('=')
+            .ok_or_else(|| format!("invalid label `{pair}`, expected key=value"))?;
+        // Trim each half, not just the whole pair: `--labels "gpu = true"`
+        // must yield key `gpu` / value `true`, otherwise the surrounding
+        // whitespace leaks into the label and it silently fails to match a
+        // node's `gpu: true` requirement at scheduling time.
+        let k = k.trim();
+        if k.is_empty() {
+            return Err(format!("invalid label `{pair}`, key must not be empty"));
+        }
+        map.insert(k.to_string(), v.trim().to_string());
+    }
+    Ok(map)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::parse_labels;
+
+    #[test]
+    fn parse_labels_trims_keys_and_values() {
+        let map = parse_labels("gpu = true, arch =arm64,zone= eu ").unwrap();
+        assert_eq!(map.get("gpu").map(String::as_str), Some("true"));
+        assert_eq!(map.get("arch").map(String::as_str), Some("arm64"));
+        assert_eq!(map.get("zone").map(String::as_str), Some("eu"));
+    }
+
+    #[test]
+    fn parse_labels_skips_empty_pairs() {
+        let map = parse_labels("a=1,,b=2,").unwrap();
+        assert_eq!(map.len(), 2);
+    }
+
+    #[test]
+    fn parse_labels_rejects_missing_value_and_empty_key() {
+        assert!(parse_labels("gpu").is_err());
+        assert!(parse_labels(" =true").is_err());
+    }
+}

@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2024 The Gleam contributors
+
+name = "multi_namespace"
+version = "1.0.0"
+description = "Test project for multi namespace"
+licences = ["Apache-2.0"]

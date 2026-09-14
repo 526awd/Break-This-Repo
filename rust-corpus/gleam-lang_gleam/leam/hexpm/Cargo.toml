@@ -1,0 +1,49 @@
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2026 The Gleam contributors
+
+[package]
+name = "hexpm"
+version = "1.18.0"
+authors = ["Louis Pilfold <louis@lpil.uk>"]
+edition = "2024"
+license = "Apache-2.0"
+
+readme = "README.md"
+repository = "https://github.com/gleam-lang/hexpm-rust"
+description = "A Rust client for the Hex package manager"
+keywords = ["erlang", "gleam", "elixir", "hex", "api-client"]
+categories = ["api-bindings"]
+
+[dependencies]
+# HTTP types
+url = "2.2"
+# Byte collections
+bytes = "1"
+# gzip (de)compression
+flate2 = "1.1"
+# RSA signature and SHA256 checksum verification
+ring = "0.17"
+# PEM -> DER conversion
+x509-parser = "0.18"
+# Basic auth HTTP helper
+http-auth-basic = "0.3"
+# Protobuf runtime
+prost = "0.13.5"
+
+base16 = { workspace = true, features = ["alloc"] }
+clap = { workspace = true, features = ["derive"] }
+ecow = { workspace = true, features = ["serde"] }
+http.workspace = true
+pubgrub.workspace = true
+regex.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+# toml encoding
+toml = "1.1"
+
+[build-dependencies]
+# Protobuf codegen
+prost-build = "0"

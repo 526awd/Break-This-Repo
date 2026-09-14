@@ -1,0 +1,689 @@
+[English](README.md) | [简体中文](README.zh-CN.md)
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/dora-rs/dora/main/docs/src/logo.svg" width="400"/>
+</p>
+
+<h2 align="center">
+  <a href="https://www.dora-rs.ai">Website</a>
+  |
+  <a href="https://dora-rs.ai/docs/guides/getting-started/conversation_py/">Python API</a>
+  |
+  <a href="https://docs.rs/dora-node-api/latest/dora_node_api/">Rust API</a>
+  |
+  <a href="https://www.dora-rs.ai/docs/guides/">Guide</a>
+  |
+  <a href="https://discord.gg/6eMGGutkfE">Discord</a>
+</h2>
+
+<div align="center">
+  <a href="https://github.com/dora-rs/dora/actions"><img src="https://github.com/dora-rs/dora/workflows/CI/badge.svg" alt="Build and test"/></a>
+  <a href="https://crates.io/crates/dora-cli"><img src="https://img.shields.io/crates/v/dora-cli.svg" alt="crates.io"/></a>
+  <a href="https://docs.rs/dora-node-api/latest/dora_node_api/"><img src="https://docs.rs/dora-node-api/badge.svg" alt="docs.rs"/></a>
+  <a href="https://pypi.org/project/dora-rs/"><img src="https://img.shields.io/pypi/v/dora-rs.svg" alt="PyPI"/></a>
+  <a href="https://github.com/dora-rs/dora/blob/main/LICENSE"><img src="https://img.shields.io/github/license/dora-rs/dora" alt="License"/></a>
+</div>
+
+<br/>
+
+<p align="center">
+  <b>dora 1.0 is out.</b> Read the <a href="https://github.com/dora-rs/dora/blob/main/docs/blog/2026-09-02-dora-1.0.md">1.0 release post</a>.
+</p>
+
+# Dora
+
+
+
+**Agentic Dataflow-Oriented Robotic Architecture** -- a 100% Rust framework for building real-time robotics and AI applications.
+
+[**User Guide**](https://dora-rs.ai/dora/) | [**用户指南 (中文)**](https://dora-rs.ai/dora/zh-CN/)
+
+> Built and maintained with **agentic engineering** -- AI agents do the heavy lifting on code generation, reviews, refactoring, and testing; humans set direction and gate every merge.
+
+---
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [CLI Commands](#cli-commands)
+- [Dataflow Configuration](#dataflow-configuration)
+- [Architecture](#architecture)
+- [Language Support](#language-support)
+- [Examples](#examples)
+- [Development](#development)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+### Performance
+
+- **10-17x faster than ROS2 Python** -- 100% Rust internals with zero-copy shared memory IPC for messages >4KB, flat latency from 4KB to 4MB payloads
+- **Zenoh SHM data plane** -- nodes publish directly via [Zenoh](https://zenoh.io/) shared memory, bypassing the daemon for 35% lower latency and 3-10x higher throughput on large payloads; automatic network fallback for cross-machine
+- **Apache Arrow native** -- columnar memory format end-to-end with zero serialization overhead; optional [Arrow IPC framing](docs/yaml-spec.md) for self-describing wire format; shared across all language bindings
+- **Non-blocking event loop** -- Zenoh publishes offloaded to a dedicated drain task; control commands respond in <500ms even under high data throughput
+
+### Developer experience
+
+- **Single CLI, full lifecycle** -- `dora run` for local dev, `dora up/start` for distributed prod, plus build, logs, monitoring, record/replay all from one tool
+- **Declarative YAML dataflows** -- define pipelines as directed graphs, connect nodes through typed inputs/outputs, optional [type annotations](docs/types.md) with static validation, override with environment variables
+- **Multi-language nodes** -- write nodes in Rust, Python, C, or C++ with native APIs (not wrappers); mix languages freely in one dataflow
+- **[Reusable modules](docs/modules.md)** -- compose sub-graphs as standalone YAML files with typed inputs/outputs, parameters, optional ports, and nested composition (compile-time expansion, zero runtime overhead)
+- **Hot reload** -- live-reload Python operators without restarting the dataflow
+- **Programmatic builder** -- construct dataflows in Python code as an alternative to YAML
+
+### Production readiness
+
+- **Fault tolerance** -- per-node restart policies (never/on-failure/always), exponential backoff, health monitoring, circuit breakers with configurable input timeouts
+- **Distributed by default** -- local shared memory between co-located nodes, automatic [Zenoh](https://zenoh.io/) pub-sub for cross-machine communication, SSH-based [cluster management](docs/distributed-deployment.md) with label scheduling, rolling upgrades, and auto-recovery
+- **Coordinator HA** -- persistent redb-backed state store (default), daemon auto-reconnect with exponential backoff, dataflow records survive coordinator restart (running dataflow reclaim-across-restart is partial, see the open issue tracker)
+- **Dynamic topology** -- add and remove nodes from running dataflows via CLI (`dora node add/remove/connect/disconnect`) without restarting
+- **Soft real-time** -- optional `--rt` flag for mlockall + SCHED_FIFO; per-node `cpu_affinity` pinning in YAML; comprehensive [tuning guide](docs/realtime-tuning.md) for memory locking, kernel params, and container deployment
+- **OpenTelemetry** -- built-in structured logging with rotation/routing, metrics, distributed tracing, and zero-setup trace viewing via CLI
+
+### Debugging and observability
+
+- **Record/replay** -- capture dataflow messages to `.drec` files, replay offline at any speed with node substitution for regression testing
+- **Topic inspection** -- `topic echo` to print live data, `topic hz` TUI for frequency analysis, `topic info` for schema and bandwidth
+- **Resource monitoring** -- `dora top` TUI showing per-node CPU, memory, queue depth, network I/O, restart count, and health status across all machines; `--once` flag for scriptable JSON snapshots
+- **Trace inspection** -- `trace list` and `trace view` for viewing coordinator spans without external infrastructure
+- **Dataflow visualization** -- generate interactive HTML or Mermaid graphs from YAML descriptors
+
+### Ecosystem
+
+- **Communication patterns** -- built-in [service (request/reply)](docs/patterns.md#2-service-requestreply), [action (goal/feedback/result)](docs/patterns.md#3-action-goalfeedbackresult), and [streaming (session/segment/chunk)](docs/patterns.md#4-streaming-sessionsegmentchunk) patterns via well-known metadata keys; no daemon or YAML changes required
+- **ROS2 bridge** -- bidirectional topics, services, and actions over DDS or native `rmw_zenoh_cpp`-compatible Zenoh; QoS mapping; Arrow-native type conversion
+- **Node Hub (package manager)** -- pull a reusable node into a dataflow with one line -- `hub: dora-yolo@^0.5` -- with cargo-style versioned resolution, reproducible lockfiles (`--locked`), and typed contracts checked at build time; backed by a git-based [public catalog](https://github.com/dora-rs/dora-hub/) of ready-made nodes for cameras, YOLO, LLMs, TTS, and more. See the [Hub guide](guide/src/hub/overview.md) *(unstable)*
+- **In-process operators** -- lightweight functions that run inside a shared runtime, avoiding per-node process overhead for simple transformations
+
+## Installation
+
+### From crates.io (recommended)
+
+```bash
+cargo install dora-cli           # CLI (dora command)
+pip install dora-rs              # Python node/operator API
+```
+
+### From source
+
+```bash
+git clone https://github.com/dora-rs/dora.git
+cd dora
+cargo build --release -p dora-cli
+PATH=$PATH:$(pwd)/target/release
+
+# Python API (requires maturin >= 1.8: pip install maturin)
+# Must run from the package directory for dependency resolution
+cd apis/python/node && maturin develop --uv && cd ../../..
+```
+
+### Platform installers
+
+**macOS / Linux:**
+
+```bash
+curl --proto '=https' --tlsv1.2 -LsSf \
+  https://github.com/dora-rs/dora/releases/latest/download/dora-cli-installer.sh | sh
+```
+
+**Windows:**
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://github.com/dora-rs/dora/releases/latest/download/dora-cli-installer.ps1 | iex"
+```
+
+### Build features
+
+| Feature | Description | Default |
+|---------|-------------|---------|
+| `tracing` | OpenTelemetry tracing support | Yes |
+| `metrics` | OpenTelemetry metrics collection | Yes |
+| `python` | Python operator support (PyO3) | No |
+| `redb-backend` | Persistent coordinator state (redb) | Yes |
+
+```bash
+cargo install dora-cli --features redb-backend
+```
+
+## Quick Start
+
+### 1. Run a Python dataflow
+
+> **Important:** The PyPI package is **`dora-rs`**, not `dora`. The import name
+> is `dora` (`from dora import Node`), but `pip install dora` installs an
+> unrelated package.
+
+```bash
+cargo install dora-cli            # or use install script below
+pip install dora-rs numpy pyarrow
+git clone https://github.com/dora-rs/dora.git && cd dora
+dora run examples/python-dataflow/dataflow.yml
+```
+
+This runs a sender -> transformer -> receiver pipeline. Here's what the Python node code looks like:
+
+```python
+# sender.py -- sends messages and polls for STOP
+from dora import Node
+import pyarrow as pa
+import time
+
+node = Node()
+sent = 0
+while sent < 100:
+    event = node.try_recv()
+    if event is not None and event["type"] == "STOP":
+        break
+    node.send_output("message", pa.array([sent]))
+    sent += 1
+    time.sleep(0.1)
+```
+
+```python
+# receiver.py -- receives and prints messages
+from dora import Node
+
+node = Node()
+for event in node:
+    if event["type"] == "INPUT":
+        print(f"Got {event['id']}: {event['value'].to_pylist()}")
+    elif event["type"] == "STOP":
+        break
+```
+
+See the [Python Getting Started Guide](docs/python-guide.md) for a full tutorial, or the [Python API Reference](docs/api-python.md) for complete API docs.
+
+### 2. Run a Rust dataflow
+
+```bash
+cd examples/rust-dataflow
+dora run dataflow.yml
+```
+
+### 3. Distributed mode (ad-hoc)
+
+```bash
+# Terminal 1: start coordinator + daemon
+dora up
+
+# Terminal 2: start a dataflow (--debug enables topic inspection)
+dora start dataflow.yml --attach --debug
+
+# Terminal 3: monitor
+dora list
+dora logs <dataflow-id>
+dora top
+
+# Stop or restart
+dora stop <dataflow-id>
+dora restart --name <name>
+dora down
+```
+
+### 4. Managed cluster
+
+```bash
+# Bring up a multi-machine cluster from a config file
+dora cluster up cluster.yml
+
+# Start a dataflow across the cluster
+dora start dataflow.yml --name my-app --attach
+
+# Check cluster health
+dora cluster status
+
+# Tear down
+dora cluster down
+```
+
+See the [Distributed Deployment Guide](docs/distributed-deployment.md) for cluster.yml configuration, label scheduling, systemd services, rolling upgrades, and operational runbooks. The network side — one LAN, a VPN mesh, or isolated subnets joined by zenoh routers — is the [Multi-machine Guide](docs/multi-machine.md).
+
+## CLI Commands
+
+### Lifecycle
+
+| Command | Description |
+|---------|-------------|
+| `dora run <PATH>` | Run a dataflow locally (no coordinator/daemon needed) |
+| `dora up` | Start coordinator and daemon in local mode |
+| `dora down` | Tear down coordinator and daemon |
+| `dora build <PATH>` | Run build commands from a dataflow descriptor |
+| `dora start <PATH>` | Start a dataflow on a running coordinator |
+| `dora stop <ID>` | Stop a running dataflow |
+| `dora restart <ID>` | Restart a running dataflow (stop + re-start) |
+
+### Monitoring
+
+| Command | Description |
+|---------|-------------|
+| `dora list` | List running dataflows (alias: `ps`) |
+| `dora clean` | Remove finished and failed dataflows from the coordinator |
+| `dora logs <ID> [--node <NAME>]` | Show logs for a dataflow or node |
+| `dora top` | Real-time resource monitor (TUI); also `dora inspect top` |
+| `dora topic list` | List topics in a dataflow |
+| `dora topic hz <TOPIC>` | Measure topic publish frequency (TUI) |
+| `dora topic echo <TOPIC>` | Print topic messages to stdout |
+| `dora topic info <TOPIC>` | Show topic type and metadata |
+| `dora node list` | List nodes in a dataflow |
+| `dora node info <NODE>` | Show detailed node status, inputs, outputs, and metrics |
+| `dora node add --from-yaml <FILE>` | Add a node to a running dataflow |
+| `dora node remove <NODE>` | Remove a node from a running dataflow |
+| `dora node connect <SRC> <DST>` | Add a live mapping between nodes |
+| `dora node disconnect <SRC> <DST>` | Remove a live mapping between nodes |
+| `dora node restart <NODE>` | Restart a single node within a running dataflow |
+| `dora node stop <NODE>` | Stop a single node within a running dataflow |
+| `dora topic pub <TOPIC> <DATA>` | Publish JSON data to a topic |
+| `dora param list <NODE>` | List runtime parameters for a node |
+| `dora param get <NODE> <KEY>` | Get a runtime parameter value |
+| `dora param set <NODE> <KEY> <VALUE>` | Set a runtime parameter (JSON value) |
+| `dora param delete <NODE> <KEY>` | Delete a runtime parameter |
+| `dora trace list` | List recent traces captured by the coordinator |
+| `dora trace view <ID>` | View spans for a specific trace (supports prefix matching) |
+| `dora record <PATH>` | Record dataflow messages to `.drec` file |
+| `dora replay <FILE>` | Replay recorded messages from `.drec` file |
+
+### Cluster management
+
+| Command | Description |
+|---------|-------------|
+| `dora cluster up <PATH>` | Bring up a cluster from a cluster.yml file |
+| `dora cluster status` | Show connected daemons and active dataflows |
+| `dora cluster down` | Tear down the cluster |
+| `dora cluster install <PATH>` | Install daemons as systemd services |
+| `dora cluster uninstall <PATH>` | Remove systemd services |
+| `dora cluster upgrade <PATH>` | Rolling upgrade: SCP binary + restart per-machine |
+| `dora cluster restart <NAME>` | Restart a dataflow by name or UUID |
+
+### Setup and utilities
+
+| Command | Description |
+|---------|-------------|
+| `dora doctor` | Diagnose environment, connectivity, and dataflow health |
+| `dora status` | Check system health (alias: `check`) |
+| `dora new` | Generate a new project or node |
+| `dora graph <PATH>` | Visualize a dataflow (Mermaid or HTML) |
+| `dora expand <PATH>` | Expand module references and print flat YAML |
+| `dora validate <PATH>` | Validate dataflow YAML and check [type annotations](docs/types.md) |
+| `dora system` | System management (daemon/coordinator control) |
+| `dora completion <SHELL>` | Generate shell completions |
+| `dora self update` | Update dora CLI |
+
+### Node Hub (unstable)
+
+| Command | Description |
+|---------|-------------|
+| `dora hub search <query>` | Find nodes by name, keyword, or category |
+| `dora hub info <pkg>[@<ver>]` | Show a package's typed contracts + example |
+| `dora hub init [PATH]` | Scaffold a `dora-node.yml` manifest |
+| `dora hub publish [PATH]` | Validate + add a pinned index entry (`--dry-run`) |
+| `dora hub yank <pkg>@<ver>` | Yank/restore a published version (`--undo`) |
+| `dora hub list/outdated/update <dataflow>` | Inspect, check, and refresh lockfile pins |
+| `dora hub fetch <target>` | Mirror pinned sources locally (inspection / CI / transfer) |
+
+Reference a node with one line of YAML -- `hub: dora-yolo@^0.5` -- and `dora build` resolves, pins, and type-checks it. See the [Hub guide](guide/src/hub/overview.md).
+
+For full CLI documentation, see [docs/cli.md](docs/cli.md). For running a dataflow across several machines, start with [docs/multi-machine.md](docs/multi-machine.md); for cluster management, see [docs/distributed-deployment.md](docs/distributed-deployment.md).
+
+## Dataflow Configuration
+
+Dataflows are defined in YAML. Each node declares its binary/script, inputs, and outputs:
+
+```yaml
+nodes:
+  - id: camera
+    build: pip install opencv-video-capture
+    path: opencv-video-capture
+    inputs:
+      tick: dora/timer/millis/20
+    outputs:
+      - image
+    env:
+      CAPTURE_PATH: 0
+      IMAGE_WIDTH: 640
+      IMAGE_HEIGHT: 480
+
+  - id: object-detection
+    build: pip install dora-yolo
+    path: dora-yolo
+    inputs:
+      image: camera/image
+    outputs:
+      - bbox
+
+  - id: plot
+    build: pip install dora-rerun
+    path: dora-rerun
+    inputs:
+      image: camera/image
+      boxes2d: object-detection/bbox
+```
+
+**Built-in timer nodes:** `dora/timer/millis/<N>` and `dora/timer/hz/<N>`.
+
+**Input format:** `<node-id>/<output-name>` to subscribe to another node's output. Long form supports `queue_size`, `queue_policy` (`drop_oldest` or `backpressure`), and `input_timeout`. See the [YAML Specification](docs/yaml-spec.md) for details.
+
+**Type annotations:** Optionally annotate ports with type URNs for static and runtime validation. See the [Type Annotations Guide](docs/types.md) for the full type library.
+
+```yaml
+nodes:
+  - id: camera
+    path: camera.py
+    outputs:
+      - image
+    output_types:
+      image: std/media/v1/Image
+```
+
+```bash
+dora validate dataflow.yml                        # static check (warnings)
+dora validate --strict-types dataflow.yml         # fail on warnings (CI)
+dora build dataflow.yml --strict-types            # type check during build
+DORA_RUNTIME_TYPE_CHECK=warn dora run dataflow.yml  # runtime check
+```
+
+**Modules:** Extract reusable sub-graphs into separate files with `module:` instead of `path:`. See the [Modules Guide](docs/modules.md) for details.
+
+```yaml
+nodes:
+  - id: nav_stack
+    module: modules/navigation.module.yml
+    inputs:
+      goal_pose: localization/goal
+```
+
+## Architecture
+
+<p align="center">
+  <img src="docs/src/architecture.svg" alt="Dora architecture: dora CLI drives the Coordinator over a WebSocket control plane; the Coordinator launches a Daemon per host; Daemons and Nodes exchange data over the Zenoh data plane" width="680"/>
+</p>
+
+| Layer | Protocol | Purpose |
+|-------|----------|---------|
+| CLI <-> Coordinator | WebSocket (port 6013) | Build, run, stop commands |
+| Coordinator <-> Daemon | WebSocket | Node spawning, dataflow lifecycle |
+| Daemon <-> Daemon | Zenoh | Distributed cross-machine communication |
+| Node <-> Node | Zenoh SHM | Direct zero-copy data plane for messages >4KB |
+| Daemon <-> Node | Shared memory / TCP | Control plane + small message delivery |
+
+### Key components
+
+- **Coordinator** -- orchestrates dataflow lifecycle across daemons. Persistent redb state store by default; daemons auto-reconnect on coordinator restart.
+- **Daemon** -- spawns and manages nodes on a single machine. Routes messages and manages Zenoh SHM data plane.
+- **Runtime** -- in-process operator execution engine. Operators run inside the runtime process, avoiding per-operator process overhead.
+- **Nodes** -- standalone processes that communicate via inputs/outputs. Written in Rust, Python, C, or C++.
+- **Operators** -- lightweight functions that run inside the runtime. Faster than nodes for simple transformations.
+
+### Workspace layout
+
+```
+binaries/
+  cli/                  # dora CLI binary
+  coordinator/          # Orchestration service
+  daemon/               # Node manager + IPC
+  runtime/              # In-process operator runtime
+  ros2-bridge-node/     # ROS2 bridge binary
+  mavlink2-bridge-node/ # MAVLink 2 bridge binary
+  record-node/          # Dataflow message recorder
+  replay-node/          # Recorded message replayer
+libraries/
+  core/                 # Descriptor parsing, build utilities
+  message/              # Inter-component message types
+  arrow-convert/        # Arrow data conversion
+  recording/            # .drec recording format
+  log-utils/            # Log parsing, merging, formatting
+  coordinator-store/    # Persistent coordinator state (redb)
+  extensions/
+    telemetry/          # OpenTelemetry tracing + metrics
+    ros2-bridge/        # ROS2 interop (bridge, msg-gen, arrow, python)
+    mavlink2-bridge/    # MAVLink 2 interop (Arrow ↔ MAVLink, TCP/UDP/serial)
+    download/           # Download utilities
+apis/
+  rust/node/            # Rust node API (dora-node-api)
+  rust/operator/        # Rust operator API (dora-operator-api)
+  python/node/          # Python node API (PyO3)
+  python/operator/      # Python operator API (PyO3)
+  python/cli/           # Python CLI interface
+  c/node/               # C node API
+  c/operator/           # C operator API
+  c++/node/             # C++ node API (CXX bridge)
+  c++/operator/         # C++ operator API (CXX bridge)
+examples/               # Example dataflows
+```
+
+## Language Support
+
+| Language | Node API | Operator API | Docs | Status |
+|----------|----------|--------------|------|--------|
+| Rust | `dora-node-api` | `dora-operator-api` | [API Reference](docs/api-rust.md) | First-class |
+| Python >= 3.11 | `pip install dora-rs` | included | [Getting Started](docs/python-guide.md), [API Reference](docs/api-python.md) | First-class |
+| C | `dora-node-api-c` | `dora-operator-api-c` | [API Reference](docs/api-c.md) | Supported |
+| C++ | `dora-node-api-cxx` | `dora-operator-api-cxx` | [API Reference](docs/api-cxx.md) | Supported |
+| ROS2 >= Foxy | `dora-ros2-bridge` | -- | [Bridge Guide](docs/ros2-bridge.md) | Experimental |
+
+### Platform support
+
+| Platform | Rust / Python | C / C++ templates |
+|----------|---------------|-------------------|
+| Linux (x86_64, ARM64, ARM32) | First-class (PR-gated) | First-class (nightly-gated) |
+| macOS (ARM64) | First-class (nightly-gated) | Best effort (nightly-gated) |
+| Windows (x86_64) | Best effort (nightly-gated) | Best effort (not gated) |
+| WSL (x86_64) | Best effort | Best effort (not gated) |
+
+**Gate meanings (#1716):**
+
+- **PR-gated** — every PR to `main` runs these tests; merge is blocked on failure.
+- **Nightly-gated** — the daily scheduled run (`.github/workflows/nightly.yml`) runs these. A failure auto-files a `nightly-regression` issue but does NOT block PRs.
+- **Not gated** — no automated CI coverage. Regressions surface via user reports.
+
+`dora new --lang rust/python` template tests run in nightly across all three platforms;
+C/C++ variants run in nightly on Linux only. Developers who need cross-platform
+verification before merge can run `make qa-test` / `make qa-examples` / `make qa-nightly`
+locally. See [`docs/testing-matrix.md`](docs/testing-matrix.md#platform-parity) for the full rationale.
+
+## Examples
+
+### Core language examples
+
+| Example | Language | Description |
+|---------|----------|-------------|
+| [rust-dataflow](examples/rust-dataflow) | Rust | Basic Rust node pipeline |
+| [python-dataflow](examples/python-dataflow) | Python | Python sender/transformer/receiver |
+| [python-operator-dataflow](examples/python-operator-dataflow) | Python | Python operators (in-process) |
+| [python-dataflow-builder](examples/python-dataflow-builder) | Python | Pythonic imperative API |
+| [c-dataflow](examples/c-dataflow) | C | C node example |
+| [c++-dataflow](examples/c++-dataflow) | C++ | C++ node example |
+| [c++-arrow-dataflow](examples/c++-arrow-dataflow) | C++ | C++ with Arrow data |
+| [cmake-dataflow](examples/cmake-dataflow) | C/C++ | CMake-based build |
+
+### Composition
+
+| Example | Language | Description |
+|---------|----------|-------------|
+| [module-dataflow](examples/module-dataflow) | Python | Reusable module composition |
+| [typed-dataflow](examples/typed-dataflow) | Python | Type annotations with `dora validate` |
+
+### Communication patterns
+
+| Example | Language | Description |
+|---------|----------|-------------|
+| [service-example](examples/service-example) | Rust | Request/reply with `request_id` correlation |
+| [action-example](examples/action-example) | Rust | Goal/feedback/result with cancellation |
+| [streaming-example](examples/streaming-example) | Python | Token-by-token generation with session/seq/fin metadata |
+
+See [docs/patterns.md](docs/patterns.md) for the full guide.
+
+### Dynamic topology
+
+| Example | Language | Description |
+|---------|----------|-------------|
+| [dynamic-add-remove](examples/dynamic-add-remove) | Python | Add/remove nodes from running dataflows |
+| [dynamic-agent-tools](examples/dynamic-agent-tools) | Python | AI agent with dynamically-added tools |
+
+### Advanced patterns
+
+| Example | Language | Description |
+|---------|----------|-------------|
+| [python-async](examples/python-async) | Python | Async Python nodes |
+| [python-concurrent-rw](examples/python-concurrent-rw) | Python | Concurrent read-write patterns |
+| [python-multiple-arrays](examples/python-multiple-arrays) | Python | Multi-array handling |
+| [python-drain](examples/python-drain) | Python | Event draining patterns |
+| [multiple-daemons](examples/multiple-daemons) | Rust | Distributed multi-daemon setup |
+| [rust-dataflow-git](examples/rust-dataflow-git) | Rust | Git-based dataflow loading |
+| [rust-dataflow-url](examples/rust-dataflow-url) | Rust | URL-based dataflow loading |
+
+### Logging
+
+| Example | Language | Description |
+|---------|----------|-------------|
+| [python-logging](examples/python-logging) | Python | Python logging integration |
+| [python-log](examples/python-log) | Python | Basic Python log output |
+| [log-sink-tcp](examples/log-sink-tcp) | YAML | TCP-based log sink |
+| [log-sink-file](examples/log-sink-file) | YAML | File-based log sink |
+| [log-sink-alert](examples/log-sink-alert) | YAML | Alert-based log sink |
+| [log-aggregator](examples/log-aggregator) | Python | Centralized log aggregation via `dora/logs` |
+
+### Performance
+
+| Example | Language | Description |
+|---------|----------|-------------|
+| [benchmark](examples/benchmark) | Rust/Python | Latency and throughput benchmark |
+| [ros2-comparison](examples/ros2-comparison) | Python | Dora vs ROS2 comparison |
+| [cuda-benchmark](examples/cuda-benchmark) | Rust/CUDA | GPU zero-copy benchmark |
+
+### ROS2 integration
+
+| Example | Description |
+|---------|-------------|
+| [ros2-bridge/rust](examples/ros2-bridge/rust) | Rust ROS2 topics, services, actions |
+| [ros2-bridge/python](examples/ros2-bridge/python) | Python ROS2 integration |
+| [ros2-bridge/c++](examples/ros2-bridge/c++) | C++ ROS2 integration |
+| [ros2-bridge/yaml-bridge](examples/ros2-bridge/yaml-bridge) | YAML-based ROS2 topic bridge |
+| [ros2-bridge/yaml-bridge-service](examples/ros2-bridge/yaml-bridge-service) | YAML ROS2 service bridge |
+| [ros2-bridge/yaml-bridge-action](examples/ros2-bridge/yaml-bridge-action) | YAML ROS2 action client |
+| [ros2-bridge/yaml-bridge-action-server](examples/ros2-bridge/yaml-bridge-action-server) | YAML ROS2 action server |
+
+### MAVLink 2 integration
+
+| Example | Description |
+|---------|-------------|
+| [mavlink2-bridge (Rust)](examples/mavlink2-bridge/dataflow-rust.yml) | MAVLink 2 ↔ dora bridge, Rust telemetry consumer |
+| [mavlink2-bridge (Python)](examples/mavlink2-bridge/dataflow-python.yml) | Same bridge, Python telemetry consumer (`--uv`) |
+| [mavlink2-bridge (C++)](examples/mavlink2-bridge/dataflow-cxx.yml) | Same bridge, C++ telemetry consumer (`cargo run --example mavlink2-bridge-cxx`) |
+| [mavlink2-bridge-sitl-mission](examples/mavlink2-bridge-sitl-mission) | Closed-loop ArduCopter SITL: arm + takeoff + hover + land driven from a Python dora node (Ubuntu / macOS, local-only) |
+
+## Development
+
+**Rust edition 2024; MSRV and default workspace package metadata are
+tracked in `[workspace.package]` of the root `Cargo.toml`.** Most crates
+inherit the workspace version via `version.workspace = true`; a handful
+(e.g. `apis/rust/operator/types`, the `examples/error-propagation/*`
+samples) pin their own version independently.
+
+### Build
+
+```bash
+# Build all (excluding Python packages which require maturin)
+cargo build --all \
+  --exclude dora-node-api-python \
+  --exclude dora-operator-api-python \
+  --exclude dora-ros2-bridge-python
+
+# Build specific package
+cargo build -p dora-cli
+```
+
+### Test
+
+```bash
+# Run all tests
+cargo test --all \
+  --exclude dora-runtime-python \
+  --exclude dora-node-api-python \
+  --exclude dora-operator-api-python \
+  --exclude dora-ros2-bridge-python
+
+# Test single package
+cargo test -p dora-core
+
+# Smoke tests (requires coordinator/daemon)
+cargo test --test example-smoke -- --test-threads=1
+```
+
+### Lint and format
+
+```bash
+cargo clippy --all
+cargo fmt --all -- --check
+```
+
+### Run examples
+
+```bash
+cargo run --example rust-dataflow
+cargo run --example python-dataflow
+cargo run --example benchmark --release
+```
+
+## Quality assurance
+
+Dora ships with a three-tier QA system designed for AI-authored code. Everything runs locally first; CI mirrors the same scripts.
+
+```bash
+make qa-install        # one-time: install cargo-audit, cargo-deny, cargo-llvm-cov, cargo-mutants, cargo-semver-checks
+make qa-fast           # ~15s    -- fmt + clippy + audit + unwrap-budget + secret-files + typos + publish-graph (pre-commit)
+make qa-full           # ~5-10m  -- qa-fast + tests + coverage (pre-push)
+make qa-deep           # ~15m    -- qa-full + mutation testing + semver (target Tier 1 gate, stronger than today's CI; alias: qa-tier1)
+make qa-nightly        # ~3-4h -- qa-deep + proptest@1000 + miri + example-smoke + ci-nightly-jobs (full parity with .github/workflows/nightly.yml)
+make qa-release-gate   #         -- qa-deep + semver (Tier 3 automatable; audit/dogfood are human)
+make qa-mutation-audit # ~10-18h -- full-repo cargo-mutants; deliberate test-quality audit
+make qa-examples       # ~15-20m -- run all smoke-eligible example dataflows end-to-end (skips CUDA/ROS2/C++/interactive)
+```
+
+On Ubuntu, install `ripgrep` separately and install `typos-cli` with Cargo:
+
+```bash
+sudo apt update
+sudo apt install ripgrep
+cargo install typos-cli
+```
+
+**Gates in place:**
+
+- **Supply chain** -- `cargo-audit` + `cargo-deny` for CVEs, license policy, dependency bans
+- **Unwrap ratchet** -- counts `.unwrap()` / `.expect(` in production code; can only go down (`.unwrap-budget`)
+- **Coverage** -- `cargo-llvm-cov` with diff-coverage gate (70% on PR-touched lines)
+- **Mutation testing** -- `cargo-mutants` against critical crates (library crates at package scope, binary crates with `test_workspace = true`)
+- **Property testing** -- `proptest` on wire-protocol types; catches edge cases unit tests miss
+- **Miri** -- UB detection on pure-Rust unsafe hotspots (e.g., `dora-core::metadata`)
+- **SemVer check** -- `cargo-semver-checks` against the last git tag
+- **Breaking-change gate** -- every surface dora 1.x freezes, diffed against the last release tag: the C header, the cxx bridge, the dataflow YAML schema, the postcard wire format, the `dora` command, the Python floor, and the Rust API of the covered crates. Runs on every PR; the surface half needs no build (`make qa-breaking`)
+- **Adversarial LLM review** -- `scripts/qa/adversarial.sh` runs a *different* model on your diff to catch single-model blind spots (local today; CI pending API secret)
+
+**Reference docs:**
+
+- [Contributor QA Cheat Sheet](docs/contributor-qa-cheatsheet.md) -- contributor-oriented setup, day-to-day commands, and PR validation checklist
+- [QA Runbook](docs/qa-runbook.md) -- day-to-day command reference, failure modes, and fixes
+- [Agentic QA Strategy](docs/plan-agentic-qa-strategy.md) -- full three-tier design and rationale
+- [POC Report](docs/qa-poc-report-2026-04-09.md) -- case studies, metrics, lessons learned, recommendations for the wider ecosystem
+
+## Contributing
+
+We welcome contributors of all experience levels. See the [contributing guide](CONTRIBUTING.md) to get started.
+
+For non-trivial work, discuss the approach in a GitHub issue, discussion, or Discord thread before implementing it. Before opening or updating a PR, run the QA level appropriate for the change and include the validation you ran in the PR description. The [Contributor QA Cheat Sheet](docs/contributor-qa-cheatsheet.md) is the fastest day-to-day reference; the stricter per-change policy lives in [docs/agentic-qa-policy.md](docs/agentic-qa-policy.md).
+
+### Communication
+
+- [Discord](https://discord.gg/6eMGGutkfE)
+- [GitHub Discussions](https://github.com/orgs/dora-rs/discussions)
+
+## Agentic Engineering
+
+This repository is built with agentic engineering. AI agents collaborate on day-to-day work -- code generation, reviews, refactoring, testing, drafting PR comments, triaging nightly regressions -- while maintainers set direction, review judgments, and authorize what ships. The two roles compound: AI agents move fast on mechanical work; humans catch the things that matter.
+
+## License
+
+Apache-2.0. See [NOTICE.md](NOTICE.md) for details.

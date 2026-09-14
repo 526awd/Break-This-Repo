@@ -1,0 +1,419 @@
+use crate::{
+    artifacts::ArtifactStore, events::Event, ws_control::handle_control_ws,
+    ws_daemon::handle_daemon_ws,
+};
+use axum::{
+    Router,
+    extract::{ConnectInfo, Path, Query, State, ws::WebSocketUpgrade},
+    http::{HeaderMap, StatusCode},
+    response::IntoResponse,
+    routing::get,
+};
+use dora_coordinator_store::CoordinatorStore;
+use dora_core::uhlc::HLC;
+use dora_message::auth::AuthToken;
+use std::{
+    collections::HashMap,
+    net::{IpAddr, SocketAddr},
+    sync::{Arc, Mutex},
+    time::Instant,
+};
+use tokio::{net::TcpListener, sync::mpsc};
+use tower::{ServiceBuilder, limit::ConcurrencyLimitLayer};
+
+/// Maximum message size for control plane JSON messages (1 MiB).
+const MAX_CONTROL_MESSAGE_BYTES: usize = 1024 * 1024;
+
+/// Maximum concurrent WebSocket connections.
+const MAX_WS_CONNECTIONS: usize = 256;
+
+/// Maximum new connections per IP within the rate window.
+const MAX_CONNECTIONS_PER_IP: u32 = 20;
+
+/// Rate-limiting window duration (60 seconds).
+const RATE_WINDOW_SECS: u64 = 60;
+
+/// Fixed-window per-IP rate limiter for WebSocket connections.
+#[derive(Clone)]
+pub(crate) struct IpRateLimiter {
+    windows: Arc<Mutex<HashMap<IpAddr, (u32, Instant)>>>,
+}
+
+impl IpRateLimiter {
+    pub fn new() -> Self {
+        Self {
+            windows: Arc::new(Mutex::new(HashMap::new())),
+        }
+    }
+
+    /// Returns `true` if the connection should be allowed.
+    /// Loopback addresses are always allowed (localhost has machine-level access).
+    pub fn check(&self, ip: IpAddr) -> bool {
+        if ip.is_loopback() {
+            return true;
+        }
+        let mut map = self.windows.lock().unwrap_or_else(|e| e.into_inner());
+        let now = Instant::now();
+        let window = std::time::Duration::from_secs(RATE_WINDOW_SECS);
+
+        // Drop entries whose window has already elapsed. Without this the map
+        // grows without bound: `check` inserts an entry for every distinct IP
+        // that ever connects and nothing ever removes them, so a peer rotating
+        // source addresses leaks memory for the coordinator's whole lifetime.
+        // Pruning here bounds the map to IPs seen within the last window, and
+        // means every surviving (or freshly inserted) entry is within its
+        // window — so the count below is always compared within the current
+        // fixed window.
+        map.retain(|_, (_, started)| now.duration_since(*started) < window);
+
+        let entry = map.entry(ip).or_insert((0, now));
+        if entry.0 < MAX_CONNECTIONS_PER_IP {
+            entry.0 += 1;
+            true
+        } else {
+            false
+        }
+    }
+}
+
+#[derive(Clone)]
+pub(crate) struct WsState {
+    pub event_tx: mpsc::Sender<Event>,
+    pub clock: Arc<HLC>,
+    pub auth_token: Option<AuthToken>,
+    pub artifact_store: Arc<ArtifactStore>,
+    pub store: Arc<dyn CoordinatorStore>,
+    pub rate_limiter: IpRateLimiter,
+    /// DaemonId -> WS peer address (set at registration). Lets daemons
+    /// reach each other's direct-TCP memory-pool data listeners.
+    pub daemon_peer_addrs: Arc<std::sync::RwLock<std::collections::HashMap<String, SocketAddr>>>,
+}
+
+/// Query parameters for backward compatibility — old clients may send `?token=...`.
+/// The token field is deserialized but intentionally ignored; auth is via Bearer header only.
+#[derive(serde::Deserialize)]
+pub(crate) struct TokenQuery {
+    #[serde(default)]
+    #[allow(dead_code)]
+    token: Option<String>,
+}
+
+/// Extract the auth token from the Authorization header ("Bearer <hex>").
+pub(crate) fn extract_token(headers: &HeaderMap) -> Option<String> {
+    if let Some(auth_header) = headers.get("authorization")
+        && let Ok(value) = auth_header.to_str()
+        && let Some(token) = value.strip_prefix("Bearer ")
+    {
+        return Some(token.to_string());
+    }
+    None
+}
+
+/// Validate the provided token against the expected token.
+/// Returns `Ok(())` if auth is disabled or token matches.
+pub(crate) fn validate_token(
+    expected: &Option<AuthToken>,
+    provided: &Option<String>,
+) -> Result<(), StatusCode> {
+    let Some(expected) = expected else {
+        return Ok(()); // auth disabled
+    };
+    match provided {
+        Some(t)
+            if dora_message::auth::constant_time_eq(t.as_bytes(), expected.as_hex().as_bytes()) =>
+        {
+            Ok(())
+        }
+        _ => {
+            tracing::warn!("rejected WebSocket connection: invalid or missing auth token");
+            Err(StatusCode::UNAUTHORIZED)
+        }
+    }
+}
+
+/// Build the axum router with WS routes.
+pub(crate) fn router(state: WsState) -> Router {
+    Router::new()
+        .route("/api/control", get(ws_control_handler))
+        .route("/api/daemon", get(ws_daemon_handler))
+        .route("/api/artifacts/{build_id}/{node_id}", get(artifact_handler))
+        .route("/health", get(health))
+        .with_state(Arc::new(state))
+        .layer(ServiceBuilder::new().layer(ConcurrencyLimitLayer::new(MAX_WS_CONNECTIONS)))
+}
+
+async fn health() -> &'static str {
+    "ok"
+}
+
+async fn ws_control_handler(
+    State(state): State<Arc<WsState>>,
+    ConnectInfo(addr): ConnectInfo<SocketAddr>,
+    headers: HeaderMap,
+    Query(_query): Query<TokenQuery>,
+    ws: WebSocketUpgrade,
+) -> Result<impl IntoResponse, StatusCode> {
+    if !state.rate_limiter.check(addr.ip()) {
+        tracing::warn!("rate-limited WS control connection from {}", addr.ip());
+        return Err(StatusCode::TOO_MANY_REQUESTS);
+    }
+    let token = extract_token(&headers);
+    validate_token(&state.auth_token, &token)?;
+    Ok(ws
+        .max_message_size(MAX_CONTROL_MESSAGE_BYTES)
+        .on_upgrade(move |socket| {
+            handle_control_ws(socket, state.event_tx.clone(), state.clock.clone())
+        }))
+}
+
+async fn ws_daemon_handler(
+    State(state): State<Arc<WsState>>,
+    ConnectInfo(addr): ConnectInfo<SocketAddr>,
+    headers: HeaderMap,
+    Query(_query): Query<TokenQuery>,
+    ws: WebSocketUpgrade,
+) -> Result<impl IntoResponse, StatusCode> {
+    if !state.rate_limiter.check(addr.ip()) {
+        tracing::warn!("rate-limited WS daemon connection from {}", addr.ip());
+        return Err(StatusCode::TOO_MANY_REQUESTS);
+    }
+    let token = extract_token(&headers);
+    validate_token(&state.auth_token, &token)?;
+    Ok(ws
+        .max_message_size(MAX_CONTROL_MESSAGE_BYTES)
+        .on_upgrade(move |socket| {
+            handle_daemon_ws(
+                socket,
+                state.event_tx.clone(),
+                state.clock.clone(),
+                state.store.clone(),
+                addr,
+                state.daemon_peer_addrs.clone(),
+            )
+        }))
+}
+
+async fn artifact_handler(
+    State(state): State<Arc<WsState>>,
+    ConnectInfo(addr): ConnectInfo<SocketAddr>,
+    headers: HeaderMap,
+    Query(_query): Query<TokenQuery>,
+    Path((build_id, node_id)): Path<(String, String)>,
+) -> Result<impl IntoResponse, StatusCode> {
+    if !state.rate_limiter.check(addr.ip()) {
+        return Err(StatusCode::TOO_MANY_REQUESTS);
+    }
+    let token = extract_token(&headers);
+    validate_token(&state.auth_token, &token)?;
+
+    let build_uuid: uuid::Uuid = build_id.parse().map_err(|_| StatusCode::BAD_REQUEST)?;
+
+    let path = state
+        .artifact_store
+        .artifact_path(&build_uuid, &node_id)
+        .ok_or(StatusCode::BAD_REQUEST)?;
+
+    let data = tokio::fs::read(&path).await.map_err(|e| {
+        if e.kind() == std::io::ErrorKind::NotFound {
+            StatusCode::NOT_FOUND
+        } else {
+            StatusCode::INTERNAL_SERVER_ERROR
+        }
+    })?;
+
+    Ok((
+        [(axum::http::header::CONTENT_TYPE, "application/octet-stream")],
+        data,
+    ))
+}
+
+/// Start the axum WS server. Returns the bound port, a shutdown trigger, and a future to await.
+pub(crate) async fn serve(
+    bind: SocketAddr,
+    event_tx: mpsc::Sender<Event>,
+    clock: Arc<HLC>,
+    auth_token: Option<AuthToken>,
+    artifact_store: Arc<ArtifactStore>,
+    store: Arc<dyn CoordinatorStore>,
+    daemon_peer_addrs: Arc<std::sync::RwLock<std::collections::HashMap<String, SocketAddr>>>,
+) -> eyre::Result<(
+    u16,
+    ShutdownTrigger,
+    impl std::future::Future<Output = eyre::Result<()>>,
+)> {
+    let listener = TcpListener::bind(bind).await?;
+    let port = listener.local_addr()?.port();
+    let state = WsState {
+        event_tx,
+        clock,
+        auth_token,
+        artifact_store,
+        store,
+        rate_limiter: IpRateLimiter::new(),
+        daemon_peer_addrs,
+    };
+    let app = router(state);
+    let (shutdown_tx, shutdown_rx) = tokio::sync::oneshot::channel::<()>();
+
+    let future = async move {
+        axum::serve(
+            listener,
+            app.into_make_service_with_connect_info::<SocketAddr>(),
+        )
+        .with_graceful_shutdown(async {
+            let _ = shutdown_rx.await;
+        })
+        .await
+        .map_err(|e| eyre::eyre!("axum server error: {e}"))?;
+        Ok(())
+    };
+
+    Ok((port, ShutdownTrigger(shutdown_tx), future))
+}
+
+/// Trigger for graceful WS server shutdown.
+pub(crate) struct ShutdownTrigger(tokio::sync::oneshot::Sender<()>);
+
+impl ShutdownTrigger {
+    pub(crate) fn shutdown(self) {
+        let _ = self.0.send(());
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    // --- coordinator WebSocket auth (dora-rs/dora#2027 verified test gap) ---
+
+    fn bearer(value: &str) -> HeaderMap {
+        let mut h = HeaderMap::new();
+        h.insert(
+            "authorization",
+            axum::http::HeaderValue::from_str(value).unwrap(),
+        );
+        h
+    }
+
+    #[test]
+    fn validate_token_ok_when_auth_disabled() {
+        // `expected = None` means auth is disabled: any (or no) token passes.
+        assert!(validate_token(&None, &None).is_ok());
+        assert!(validate_token(&None, &Some("whatever".to_string())).is_ok());
+    }
+
+    #[test]
+    fn validate_token_accepts_matching_token() {
+        let expected = Some(AuthToken::from_hex("deadbeef"));
+        assert!(validate_token(&expected, &Some("deadbeef".to_string())).is_ok());
+    }
+
+    #[test]
+    fn validate_token_rejects_wrong_missing_and_empty() {
+        let expected = Some(AuthToken::from_hex("deadbeef"));
+        assert_eq!(
+            validate_token(&expected, &Some("cafebabe".to_string())),
+            Err(StatusCode::UNAUTHORIZED)
+        );
+        assert_eq!(
+            validate_token(&expected, &None),
+            Err(StatusCode::UNAUTHORIZED)
+        );
+        assert_eq!(
+            validate_token(&expected, &Some(String::new())),
+            Err(StatusCode::UNAUTHORIZED)
+        );
+    }
+
+    #[test]
+    fn extract_token_parses_bearer() {
+        assert_eq!(
+            extract_token(&bearer("Bearer deadbeef")),
+            Some("deadbeef".to_string())
+        );
+    }
+
+    #[test]
+    fn extract_token_none_for_missing_or_non_bearer() {
+        assert_eq!(extract_token(&HeaderMap::new()), None);
+        assert_eq!(extract_token(&bearer("Basic deadbeef")), None);
+        // The "Bearer " prefix is case-sensitive.
+        assert_eq!(extract_token(&bearer("bearer deadbeef")), None);
+    }
+
+    #[test]
+    fn extract_token_empty_after_bearer() {
+        assert_eq!(extract_token(&bearer("Bearer ")), Some(String::new()));
+    }
+
+    #[test]
+    fn rate_limiter_allows_within_limit() {
+        let rl = IpRateLimiter::new();
+        let ip: IpAddr = "10.0.0.1".parse().unwrap();
+        for _ in 0..MAX_CONNECTIONS_PER_IP {
+            assert!(rl.check(ip));
+        }
+    }
+
+    #[test]
+    fn rate_limiter_rejects_over_limit() {
+        let rl = IpRateLimiter::new();
+        let ip: IpAddr = "10.0.0.2".parse().unwrap();
+        for _ in 0..MAX_CONNECTIONS_PER_IP {
+            rl.check(ip);
+        }
+        assert!(!rl.check(ip));
+    }
+
+    #[test]
+    fn rate_limiter_allows_localhost_unlimited() {
+        let rl = IpRateLimiter::new();
+        let ipv4_lo: IpAddr = std::net::Ipv4Addr::LOCALHOST.into();
+        let ipv6_lo: IpAddr = std::net::Ipv6Addr::LOCALHOST.into();
+        // Should never be rejected, even well past the limit
+        for _ in 0..(MAX_CONNECTIONS_PER_IP * 5) {
+            assert!(rl.check(ipv4_lo));
+            assert!(rl.check(ipv6_lo));
+        }
+    }
+
+    #[test]
+    fn rate_limiter_isolates_ips() {
+        let rl = IpRateLimiter::new();
+        let ip1: IpAddr = "10.0.0.3".parse().unwrap();
+        let ip2: IpAddr = "10.0.0.4".parse().unwrap();
+        for _ in 0..MAX_CONNECTIONS_PER_IP {
+            rl.check(ip1);
+        }
+        assert!(!rl.check(ip1));
+        assert!(rl.check(ip2));
+    }
+
+    #[test]
+    fn rate_limiter_prunes_expired_entries() {
+        let rl = IpRateLimiter::new();
+
+        // Seed a stale entry whose window has already elapsed.
+        let stale_ip: IpAddr = "10.0.0.5".parse().unwrap();
+        {
+            let mut map = rl.windows.lock().unwrap();
+            let expired = Instant::now()
+                .checked_sub(std::time::Duration::from_secs(RATE_WINDOW_SECS + 1))
+                .expect("clock far enough from start");
+            map.insert(stale_ip, (MAX_CONNECTIONS_PER_IP, expired));
+            assert_eq!(map.len(), 1);
+        }
+
+        // A check for an unrelated IP must evict the stale entry rather than
+        // letting the map grow unbounded.
+        let other_ip: IpAddr = "10.0.0.6".parse().unwrap();
+        assert!(rl.check(other_ip));
+
+        let map = rl.windows.lock().unwrap();
+        assert!(
+            !map.contains_key(&stale_ip),
+            "stale entry should have been pruned"
+        );
+        assert_eq!(map.len(), 1, "only the active IP should remain");
+    }
+}

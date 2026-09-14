@@ -1,0 +1,29 @@
+[package]
+name = "dora-ros2-bridge-msg-gen"
+version.workspace = true
+rust-version.workspace = true
+edition.workspace = true
+description = "Message generation for ROS2 bridge"
+authors = ["Yuma Hiramatsu <yuma.hiramatsu@gmail.com>"]
+license = "Apache-2.0"
+
+[dependencies]
+anyhow = "1.0"
+heck = "0.5"
+nom = "8"
+proc-macro2 = "1.0"
+quote = "1.0"
+regex = "1"
+syn = { version = "2.0", features = ["full", "parsing"] }
+thiserror = "2.0"
+glob = "0.3.3"
+tracing = { workspace = true }
+# Format generated bindings with prettyplease + syn 2 directly. The `verbatim`
+# feature is required: the generated `extern "C++"` blocks contain foreign type
+# aliases (`type X = crate::..;`) that syn represents as `ForeignItem::Verbatim`,
+# which prettyplease only prints (rather than panicking on) with this feature.
+# See dora-rs/dora#2452.
+prettyplease = { version = "0.2", features = ["verbatim"] }
+quick-xml = "0.41.0"
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }

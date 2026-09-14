@@ -1,0 +1,1583 @@
+use arrow_schema::{DataType, Field, Fields, Schema};
+use schemars::JsonSchema;
+use serde::{Deserialize, Serialize};
+use std::collections::BTreeMap;
+use std::path::Path;
+use std::sync::Arc;
+
+/// A field definition within a struct type.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema)]
+pub struct FieldDef {
+    /// Field name
+    pub name: String,
+    /// Arrow type name or URN reference
+    pub r#type: String,
+    /// Whether the field is nullable (default: true)
+    #[serde(default = "default_true")]
+    pub nullable: bool,
+}
+
+fn default_true() -> bool {
+    true
+}
+
+/// A type parameter declaration (e.g. `sample_type` on AudioFrame).
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema)]
+pub struct TypeParam {
+    /// Parameter name
+    pub name: String,
+    /// Default value (used when parameter is not specified)
+    #[serde(default)]
+    pub default: Option<String>,
+}
+
+/// Metadata key required on outputs of a given type.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema)]
+pub struct MetadataDef {
+    /// Key name that must be present in message metadata
+    pub key: String,
+    /// Description of the metadata key
+    #[serde(default)]
+    pub description: Option<String>,
+}
+
+/// A single type definition from the standard type library.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema)]
+pub struct TypeDef {
+    /// Arrow data type name (e.g. "Float32", "Struct", "LargeBinary")
+    pub arrow: String,
+    /// Human-readable description
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
+    /// Type parameters (e.g. sample_type for AudioFrame)
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub params: Vec<TypeParam>,
+    /// Struct field definitions (only for Struct arrow types)
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub fields: Vec<FieldDef>,
+    /// Required metadata keys
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub metadata: Vec<MetadataDef>,
+}
+
+impl TypeDef {
+    /// Convert the arrow type name to an `arrow_schema::DataType`.
+    ///
+    /// Returns `None` for complex types (Struct, etc.) that cannot be validated
+    /// from the type name alone.
+    pub fn arrow_data_type(&self) -> Option<DataType> {
+        arrow_type_from_name(&self.arrow)
+    }
+
+    /// Build an Arrow `Schema` resolving nested struct refs and `List<T>` via the registry.
+    ///
+    /// Returns `None` if the type has no field definitions or none could be resolved.
+    pub fn to_arrow_schema_with_registry(&self, registry: &TypeRegistry) -> Option<Schema> {
+        self.build_schema(|t| resolve_field_type(t, registry, 0))
+    }
+
+    /// Fail-closed: if any declared field cannot be resolved, returns `None`
+    /// rather than a partial schema that could mask type errors.
+    fn build_schema(&self, resolve: impl Fn(&str) -> Option<DataType>) -> Option<Schema> {
+        if self.fields.is_empty() {
+            return None;
+        }
+        let fields: Vec<Field> = self
+            .fields
+            .iter()
+            .map(|f| {
+                let dt = resolve(&f.r#type)?;
+                Some(Field::new(&f.name, dt, f.nullable))
+            })
+            .collect::<Option<Vec<_>>>()?;
+        Some(Schema::new(fields))
+    }
+}
+
+/// Convert an arrow type name string to a `DataType`.
+fn arrow_type_from_name(name: &str) -> Option<DataType> {
+    match name {
+        "Float32" => Some(DataType::Float32),
+        "Float64" => Some(DataType::Float64),
+        "Int8" => Some(DataType::Int8),
+        "Int16" => Some(DataType::Int16),
+        "Int32" => Some(DataType::Int32),
+        "Int64" => Some(DataType::Int64),
+        "UInt8" => Some(DataType::UInt8),
+        "UInt16" => Some(DataType::UInt16),
+        "UInt32" => Some(DataType::UInt32),
+        "UInt64" => Some(DataType::UInt64),
+        "Utf8" => Some(DataType::Utf8),
+        "LargeBinary" => Some(DataType::LargeBinary),
+        "Boolean" => Some(DataType::Boolean),
+        _ => None, // Struct, FixedSizeBinary, etc. — skip runtime validation
+    }
+}
+
+/// Whether `name` is an arrow discriminant dora recognizes for a shipped type's
+/// `arrow:` field: a known primitive, or `Struct` (whose shape is its fields).
+/// Anything else cannot be materialized into a schema, so it must be rejected
+/// at manifest validation rather than silently failing later at build time.
+///
+/// ```
+/// use dora_core::types::is_known_arrow_type;
+///
+/// assert!(is_known_arrow_type("Float64"));
+/// assert!(is_known_arrow_type("Struct"));
+/// // Arrow discriminants dora does not materialize are rejected:
+/// assert!(!is_known_arrow_type("FixedSizeBinary"));
+/// // A struct type referenced by its own name is not an arrow discriminant:
+/// assert!(!is_known_arrow_type("Vector3"));
+/// ```
+pub fn is_known_arrow_type(name: &str) -> bool {
+    arrow_type_from_name(name).is_some() || name == "Struct"
+}
+
+const MAX_TYPE_DEPTH: u8 = 8;
+
+/// Resolve a field type string to an Arrow `DataType`, supporting:
+/// - Primitive Arrow types (`Float64`, `Utf8`, etc.)
+/// - `List<T>` syntax (mapped to `LargeList`)
+/// - Struct type references by short name (`Vector3`) or full URN (`std/math/v1/Vector3`)
+fn resolve_field_type(type_str: &str, registry: &TypeRegistry, depth: u8) -> Option<DataType> {
+    if depth > MAX_TYPE_DEPTH {
+        return None;
+    }
+
+    // Trim surrounding whitespace so a padded field type (e.g. a quoted
+    // `"Float32 "` in YAML) resolves the same way here as in
+    // `TypeRegistry::field_type_resolves`, which already trims. Without this,
+    // the admission gate would accept the type but this materializer would
+    // return `None`, silently skipping the schema-compatibility check.
+    let type_str = type_str.trim();
+
+    // 1. Try primitive Arrow type
+    if let Some(dt) = arrow_type_from_name(type_str) {
+        return Some(dt);
+    }
+
+    // 2. Try List<inner> syntax — match outermost brackets to support nesting
+    if let Some(inner) = type_str
+        .strip_prefix("List<")
+        .and_then(|s| s.strip_suffix('>'))
+        .map(str::trim)
+    {
+        let inner_dt = resolve_field_type(inner, registry, depth + 1)?;
+        return Some(DataType::LargeList(Arc::new(Field::new(
+            "item", inner_dt, true,
+        ))));
+    }
+
+    // 3. Try registry lookup (full URN or short name)
+    let def = registry
+        .resolve(type_str)
+        .or_else(|| registry.resolve_short_name(type_str))?;
+
+    if def.fields.is_empty() {
+        // Struct with no field definitions — can't build a DataType
+        return None;
+    }
+
+    let fields: Vec<Field> = def
+        .fields
+        .iter()
+        .map(|f| {
+            let dt = resolve_field_type(&f.r#type, registry, depth + 1)?;
+            Some(Field::new(&f.name, dt, f.nullable))
+        })
+        .collect::<Option<Vec<_>>>()?;
+
+    Some(DataType::Struct(Fields::from(fields)))
+}
+
+/// Parsed URN with optional type parameters.
+///
+/// Example: `std/media/v1/AudioFrame[sample_type=f32,channels=2]`
+/// -> base = `std/media/v1/AudioFrame`, params = `{sample_type: f32, channels: 2}`
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ParsedUrn {
+    /// Base URN without parameters
+    pub base: String,
+    /// Parameter key-value pairs
+    pub params: BTreeMap<String, String>,
+}
+
+/// Parse a URN string into base + optional parameters.
+///
+/// Accepted formats:
+/// - `std/core/v1/Float32` (no params)
+/// - `std/media/v1/AudioFrame[sample_type=f32]` (with params)
+/// - `std/media/v1/AudioFrame[sample_type=f32,channels=2]` (multiple params)
+///
+/// Returns `None` for malformed input: a `[` with no closing `]`, empty
+/// brackets `[]`, an empty parameter key or value, or a `[params]` block with
+/// no base type (e.g. `[sample_type=f32]`).
+///
+/// ```
+/// use dora_core::types::parse_urn;
+///
+/// // With parameters:
+/// let Some(parsed) = parse_urn("std/media/v1/AudioFrame[sample_type=f32,channels=2]")
+/// else { unreachable!() };
+/// assert_eq!(parsed.base, "std/media/v1/AudioFrame");
+/// assert_eq!(parsed.params.get("sample_type"), Some(&"f32".to_string()));
+/// assert_eq!(parsed.params.get("channels"), Some(&"2".to_string()));
+///
+/// // No-param URN parses with an empty parameter map:
+/// let Some(plain) = parse_urn("std/core/v1/Float32") else { unreachable!() };
+/// assert_eq!(plain.base, "std/core/v1/Float32");
+/// assert!(plain.params.is_empty());
+///
+/// // Malformed inputs return None:
+/// assert!(parse_urn("std/media/v1/AudioFrame[").is_none()); // no closing ]
+/// assert!(parse_urn("std/media/v1/AudioFrame[]").is_none()); // empty brackets
+/// assert!(parse_urn("std/media/v1/AudioFrame[=f32]").is_none()); // empty key
+/// assert!(parse_urn("[sample_type=f32]").is_none()); // no base type
+/// assert!(parse_urn("").is_none());
+/// ```
+pub fn parse_urn(urn: &str) -> Option<ParsedUrn> {
+    if urn.is_empty() {
+        return None;
+    }
+    let Some(bracket_start) = urn.find('[') else {
+        return Some(ParsedUrn {
+            base: urn.to_string(),
+            params: BTreeMap::new(),
+        });
+    };
+    if !urn.ends_with(']') {
+        return None; // malformed: has `[` but no closing `]`
+    }
+    let base = urn[..bracket_start].to_string();
+    if base.is_empty() {
+        return None; // malformed: a `[params]` block with no base type
+    }
+    let params_str = &urn[bracket_start + 1..urn.len() - 1];
+    if params_str.is_empty() {
+        return None; // malformed: empty brackets
+    }
+    let mut params = BTreeMap::new();
+    for part in params_str.split(',') {
+        let part = part.trim();
+        let (k, v) = part.split_once('=')?;
+        let k = k.trim();
+        let v = v.trim();
+        if k.is_empty() || v.is_empty() {
+            return None;
+        }
+        params.insert(k.to_string(), v.to_string());
+    }
+    Some(ParsedUrn { base, params })
+}
+
+/// Parameter-agreement rule shared by [`types_match`] and
+/// [`CompatibilityGraph::is_compatible`]: two parameter maps agree when every
+/// key present in *both* maps has an equal value. An empty map on either side is
+/// a wildcard that matches anything.
+///
+/// Keeping this in one place ensures the two type-compatibility code paths can
+/// never silently diverge on the parameter contract.
+fn params_agree(a: &BTreeMap<String, String>, b: &BTreeMap<String, String>) -> bool {
+    if a.is_empty() || b.is_empty() {
+        return true;
+    }
+    a.iter().all(|(k, va)| b.get(k).is_none_or(|vb| vb == va))
+}
+
+/// Check if two type URNs are compatible (considering parameters).
+///
+/// Rules:
+/// - Same base + same params -> compatible
+/// - Same base + one side unparameterized -> compatible (wildcard)
+/// - Same base + different param values -> mismatch
+/// - Different base -> mismatch
+///
+/// Note that "different param values" only rejects when the two sides
+/// disagree on a *shared* key; params on disjoint keys never conflict.
+///
+/// # Examples
+///
+/// ```
+/// use dora_core::types::types_match;
+///
+/// // Identical URNs match.
+/// assert!(types_match("std/media/v1/Image", "std/media/v1/Image"));
+/// // An unparameterized side acts as a wildcard.
+/// assert!(types_match("std/media/v1/Image[encoding=jpeg]", "std/media/v1/Image"));
+/// // Disjoint parameter keys never conflict.
+/// assert!(types_match("x/T[a=1]", "x/T[b=2]"));
+/// // A shared key with different values is a mismatch.
+/// assert!(!types_match(
+///     "std/media/v1/Image[encoding=jpeg]",
+///     "std/media/v1/Image[encoding=png]"
+/// ));
+/// // Different bases never match.
+/// assert!(!types_match("std/core/v1/Int32", "std/core/v1/Int64"));
+/// ```
+pub fn types_match(a: &str, b: &str) -> bool {
+    let Some(pa) = parse_urn(a) else {
+        return a == b;
+    };
+    let Some(pb) = parse_urn(b) else {
+        return a == b;
+    };
+    if pa.base != pb.base {
+        return false;
+    }
+    params_agree(&pa.params, &pb.params)
+}
+
+/// YAML file format for a type package.
+#[derive(Debug, Deserialize)]
+struct TypePackage {
+    types: BTreeMap<String, TypeDef>,
+}
+
+/// Extract the short type name from a URN (e.g. `std/media/v1/Image` -> `Image`).
+///
+/// Any `[...]` type-parameter block is stripped first, then the last `/`-delimited
+/// segment is returned. A bare name with no `/` is returned unchanged.
+///
+/// ```
+/// use dora_core::types::urn_short_name;
+///
+/// assert_eq!(urn_short_name("std/media/v1/Image"), "Image");
+/// // Type parameters are stripped before taking the last path segment:
+/// assert_eq!(urn_short_name("std/media/v1/AudioFrame[sample_type=f32]"), "AudioFrame");
+/// // A bare name (no `/`) is returned unchanged:
+/// assert_eq!(urn_short_name("BareName"), "BareName");
+/// ```
+pub fn urn_short_name(urn: &str) -> &str {
+    // Strip params first
+    let base = urn.split('[').next().unwrap_or(urn);
+    base.rsplit('/').next().unwrap_or(base)
+}
+
+// --- Compatibility graph (Phase 4) ---
+
+/// A user-defined type compatibility rule.
+#[derive(Debug, Clone, Deserialize)]
+pub struct TypeRule {
+    /// Source type URN
+    pub from: String,
+    /// Target type URN
+    pub to: String,
+}
+
+/// Graph of type compatibility rules for checking implicit conversions.
+pub struct CompatibilityGraph {
+    /// Adjacency list: from-URN -> set of to-URNs
+    edges: BTreeMap<String, Vec<String>>,
+}
+
+impl CompatibilityGraph {
+    /// Create a new compatibility graph with hardcoded rules + optional user rules.
+    pub fn new(user_rules: &[TypeRule]) -> Self {
+        let mut edges: BTreeMap<String, Vec<String>> = BTreeMap::new();
+
+        // Hardcoded widening rules
+        let builtins = [
+            ("std/core/v1/UInt8", "std/core/v1/UInt32"),
+            ("std/core/v1/UInt32", "std/core/v1/UInt64"),
+            ("std/core/v1/Int32", "std/core/v1/Int64"),
+            ("std/core/v1/Float32", "std/core/v1/Float64"),
+        ];
+        for (from, to) in builtins {
+            edges
+                .entry(from.to_string())
+                .or_default()
+                .push(to.to_string());
+        }
+
+        // User-defined rules
+        for rule in user_rules {
+            edges
+                .entry(rule.from.clone())
+                .or_default()
+                .push(rule.to.clone());
+        }
+
+        Self { edges }
+    }
+
+    /// Check if `from` can be implicitly converted to `to`.
+    ///
+    /// Uses BFS with a depth limit of 3 to prevent surprise transitive chains.
+    /// Also handles the universal `* -> Bytes` sink.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use dora_core::types::{CompatibilityGraph, TypeRule};
+    ///
+    /// let graph = CompatibilityGraph::new(&[]);
+    /// // Anything widens into the universal `Bytes` sink.
+    /// assert!(graph.is_compatible("std/media/v1/Image", "std/core/v1/Bytes"));
+    /// // Built-in numeric widening, including a two-hop chain (UInt8 -> UInt32 -> UInt64).
+    /// assert!(graph.is_compatible("std/core/v1/UInt8", "std/core/v1/UInt32"));
+    /// assert!(graph.is_compatible("std/core/v1/UInt8", "std/core/v1/UInt64"));
+    /// // Same base with an unparameterized target is a wildcard match.
+    /// assert!(graph.is_compatible("std/media/v1/Image[encoding=jpeg]", "std/media/v1/Image"));
+    ///
+    /// // Transitive chains are bounded at depth 3.
+    /// let rule = |from: &str, to: &str| TypeRule { from: from.into(), to: to.into() };
+    /// let chain = CompatibilityGraph::new(&[
+    ///     rule("a", "b"),
+    ///     rule("b", "c"),
+    ///     rule("c", "d"),
+    ///     rule("d", "e"),
+    /// ]);
+    /// assert!(chain.is_compatible("a", "d")); // three hops: reachable
+    /// assert!(!chain.is_compatible("a", "e")); // four hops: beyond the depth limit
+    /// ```
+    pub fn is_compatible(&self, from: &str, to: &str) -> bool {
+        // Universal sink: anything -> Bytes
+        if to == "std/core/v1/Bytes" {
+            return true;
+        }
+
+        // Parse URNs once and reuse for both matching and BFS
+        let from_parsed = parse_urn(from);
+        let to_parsed = parse_urn(to);
+        let from_base = from_parsed
+            .as_ref()
+            .map(|p| p.base.as_str())
+            .unwrap_or(from);
+        let to_base = to_parsed.as_ref().map(|p| p.base.as_str()).unwrap_or(to);
+
+        // Check parameterized match using already-parsed URNs
+        if from_base == to_base {
+            // Same base — check params via the shared agreement rule. An
+            // unparsed side (no params map) is treated as a wildcard, matching
+            // the previous behavior.
+            if let (Some(fp), Some(tp)) = (from_parsed.as_ref(), to_parsed.as_ref()) {
+                return params_agree(&fp.params, &tp.params);
+            }
+            return true;
+        }
+
+        // BFS with depth limit 3
+        let mut queue = std::collections::VecDeque::new();
+        let mut visited = std::collections::BTreeSet::new();
+        queue.push_back((from_base.to_string(), 0u32));
+        visited.insert(from_base.to_string());
+
+        while let Some((current, depth)) = queue.pop_front() {
+            if depth >= 3 {
+                continue;
+            }
+            if let Some(neighbors) = self.edges.get(&current) {
+                for next in neighbors {
+                    if next == to_base {
+                        return true;
+                    }
+                    if visited.insert(next.clone()) {
+                        queue.push_back((next.clone(), depth + 1));
+                    }
+                }
+            }
+        }
+
+        false
+    }
+}
+
+// --- Arrow schema compatibility (Phase 6) ---
+
+/// Check if `actual` schema is compatible with `expected` schema.
+///
+/// Rules:
+/// - Actual superset of expected -> OK (additive fields fine)
+/// - Missing expected field -> incompatible
+/// - Wrong field type -> incompatible
+/// - Field order is irrelevant (lookup by name)
+pub fn schema_compatible(expected: &Schema, actual: &Schema) -> Result<(), SchemaError> {
+    for expected_field in expected.fields() {
+        match actual.field_with_name(expected_field.name()) {
+            Ok(actual_field) => {
+                if actual_field.data_type() != expected_field.data_type() {
+                    return Err(SchemaError::TypeMismatch {
+                        field: expected_field.name().to_string(),
+                        expected: format!("{:?}", expected_field.data_type()),
+                        actual: format!("{:?}", actual_field.data_type()),
+                    });
+                }
+            }
+            Err(_) => {
+                return Err(SchemaError::MissingField {
+                    field: expected_field.name().to_string(),
+                });
+            }
+        }
+    }
+    Ok(())
+}
+
+/// Schema compatibility error.
+#[derive(Debug)]
+pub enum SchemaError {
+    /// A required field is missing
+    MissingField { field: String },
+    /// A field has the wrong type
+    TypeMismatch {
+        field: String,
+        expected: String,
+        actual: String,
+    },
+}
+
+impl std::fmt::Display for SchemaError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            SchemaError::MissingField { field } => write!(f, "missing field \"{field}\""),
+            SchemaError::TypeMismatch {
+                field,
+                expected,
+                actual,
+            } => write!(
+                f,
+                "field \"{field}\" type mismatch: expected {expected}, got {actual}"
+            ),
+        }
+    }
+}
+
+// --- Metadata pattern resolution (Phase 5) ---
+
+/// Resolve a communication-pattern shorthand to the metadata keys it requires.
+///
+/// The recognized shorthands are `"service-server"` / `"service-client"`,
+/// `"action-server"`, and `"action-client"` (see `docs/patterns.md`). Any other
+/// string returns `None`.
+///
+/// ```
+/// use dora_core::types::pattern_metadata_keys;
+///
+/// assert_eq!(pattern_metadata_keys("service-server"), Some(&["request_id"][..]));
+/// assert_eq!(pattern_metadata_keys("service-client"), Some(&["request_id"][..]));
+/// assert_eq!(
+///     pattern_metadata_keys("action-server"),
+///     Some(&["goal_id", "goal_status"][..]),
+/// );
+/// assert_eq!(pattern_metadata_keys("action-client"), Some(&["goal_id"][..]));
+/// // An unknown shorthand has no required keys:
+/// assert_eq!(pattern_metadata_keys("topic"), None);
+/// ```
+pub fn pattern_metadata_keys(pattern: &str) -> Option<&'static [&'static str]> {
+    match pattern {
+        "service-server" | "service-client" => Some(&["request_id"]),
+        "action-server" => Some(&["goal_id", "goal_status"]),
+        "action-client" => Some(&["goal_id"]),
+        _ => None,
+    }
+}
+
+/// Registry of known type URNs, loaded from embedded YAML files.
+///
+/// URN format: `std/<category>/v<version>/<TypeName>`
+#[derive(Clone)]
+pub struct TypeRegistry {
+    types: BTreeMap<String, TypeDef>,
+}
+
+const PACKAGES: &[(&str, &str)] = &[
+    ("std/core/v1", include_str!("../types/std/core/v1.yml")),
+    ("std/math/v1", include_str!("../types/std/math/v1.yml")),
+    (
+        "std/control/v1",
+        include_str!("../types/std/control/v1.yml"),
+    ),
+    ("std/media/v1", include_str!("../types/std/media/v1.yml")),
+    ("std/vision/v1", include_str!("../types/std/vision/v1.yml")),
+];
+
+impl TypeRegistry {
+    /// Create a new registry with all built-in standard types loaded.
+    pub fn new() -> Self {
+        let mut types = BTreeMap::new();
+        for (prefix, yaml) in PACKAGES {
+            let pkg: TypePackage =
+                serde_yaml::from_str(yaml).expect("built-in type YAML should be valid");
+            for (name, def) in pkg.types {
+                let urn = format!("{prefix}/{name}");
+                types.insert(urn, def);
+            }
+        }
+        Self { types }
+    }
+
+    /// Register a single type definition at the given URN, overwriting any
+    /// existing entry. Used to load manifest-shipped types for validation.
+    pub fn insert_type(&mut self, urn: impl Into<String>, def: TypeDef) {
+        self.types.insert(urn.into(), def);
+    }
+
+    /// Whether a struct field's type string is known: a primitive Arrow type,
+    /// `List<T>` of a known type, or any type (URN or short name) registered
+    /// here. Lenient by design — it accepts primitive-backed std types (e.g.
+    /// `std/core/v1/Bytes`) and only rejects genuinely-unknown names.
+    pub fn field_type_resolves(&self, type_str: &str) -> bool {
+        self.field_type_resolves_depth(type_str, 0)
+    }
+
+    fn field_type_resolves_depth(&self, type_str: &str, depth: u8) -> bool {
+        // bound the `List<…>` recursion: this runs on untrusted shipped-type
+        // field bodies (only the URN key is charset-checked), and a 1 MiB
+        // manifest can nest `List<` deep enough to overflow the stack. Match
+        // the cap `resolve_field_type` uses — anything deeper doesn't resolve.
+        if depth > MAX_TYPE_DEPTH {
+            return false;
+        }
+        let t = type_str.trim();
+        if arrow_type_from_name(t).is_some() {
+            return true;
+        }
+        if let Some(inner) = t.strip_prefix("List<").and_then(|s| s.strip_suffix('>')) {
+            return self.field_type_resolves_depth(inner, depth + 1);
+        }
+        self.resolve(t).is_some() || self.resolve_short_name(t).is_some()
+    }
+
+    /// Resolve a type URN to its definition.
+    ///
+    /// Handles parameterized URNs by stripping parameters before lookup.
+    pub fn resolve(&self, urn: &str) -> Option<&TypeDef> {
+        // Try exact match first
+        if let Some(def) = self.types.get(urn) {
+            return Some(def);
+        }
+        // Try stripping parameters
+        if let Some(parsed) = parse_urn(urn)
+            && parsed.base != urn
+        {
+            return self.types.get(&parsed.base);
+        }
+        None
+    }
+
+    /// Resolve a type URN to its Arrow DataType. Returns `None` if unknown or complex.
+    pub fn resolve_arrow_type(&self, urn: &str) -> Option<DataType> {
+        self.resolve(urn).and_then(|def| def.arrow_data_type())
+    }
+
+    /// Resolve a short type name (e.g., `Vector3`) by finding a unique URN suffix match.
+    ///
+    /// Returns `None` if the name is ambiguous (multiple matches) or not found.
+    pub fn resolve_short_name(&self, name: &str) -> Option<&TypeDef> {
+        let suffix = format!("/{name}");
+        let mut found = None;
+        for (urn, def) in &self.types {
+            if urn.ends_with(&suffix) {
+                if found.is_some() {
+                    return None; // ambiguous
+                }
+                found = Some(def);
+            }
+        }
+        found
+    }
+
+    /// Load user-defined types from a directory tree.
+    ///
+    /// Convention: `types/<prefix>/<category>/v<N>.yml`
+    /// URN prefix derived from directory structure.
+    /// The `std/` prefix is rejected.
+    pub fn load_from_dir(&mut self, dir: &Path) -> Result<usize, String> {
+        if !dir.is_dir() {
+            return Ok(0);
+        }
+        let mut count = 0;
+        for path in walkdir_iter(dir) {
+            if path.extension().and_then(|e| e.to_str()) != Some("yml") {
+                continue;
+            }
+            let rel = path.strip_prefix(dir).map_err(|e| e.to_string())?;
+            let prefix = rel
+                .parent()
+                .map(|p| p.to_string_lossy().replace('\\', "/"))
+                .unwrap_or_default();
+            if prefix.starts_with("std/") || prefix == "std" {
+                return Err(format!(
+                    "user types cannot use the \"std/\" prefix: {}",
+                    path.display()
+                ));
+            }
+            let stem = rel
+                .file_stem()
+                .and_then(|s| s.to_str())
+                .ok_or_else(|| format!("invalid file name: {}", path.display()))?;
+            let urn_prefix = if prefix.is_empty() {
+                stem.to_string()
+            } else {
+                format!("{prefix}/{stem}")
+            };
+            let content =
+                std::fs::read_to_string(&path).map_err(|e| format!("{}: {e}", path.display()))?;
+            let pkg: TypePackage =
+                serde_yaml::from_str(&content).map_err(|e| format!("{}: {e}", path.display()))?;
+            for (name, def) in pkg.types {
+                let urn = format!("{urn_prefix}/{name}");
+                self.types.insert(urn, def);
+                count += 1;
+            }
+        }
+        Ok(count)
+    }
+
+    /// Register a single user-defined type at the given URN (e.g. one shipped
+    /// in a node manifest, spec §6.3). The `std/` prefix is reserved.
+    pub fn add_user_type(&mut self, urn: &str, def: TypeDef) -> Result<(), String> {
+        if urn.starts_with("std/") || urn == "std" {
+            return Err(format!("user types cannot use the \"std/\" prefix: {urn}"));
+        }
+        // reject control characters and other unexpected bytes so a registered
+        // URN can be safely echoed and used as a map key (namespace ownership
+        // remains the caller's responsibility — the registry has no namespace)
+        let valid_char = |c: char| c.is_ascii_alphanumeric() || matches!(c, '_' | '-' | '.' | '/');
+        if urn.is_empty() || !urn.chars().all(valid_char) {
+            return Err(format!(
+                "invalid type URN `{}`",
+                urn.chars().filter(|c| !c.is_control()).collect::<String>()
+            ));
+        }
+        self.types.insert(urn.to_string(), def);
+        Ok(())
+    }
+
+    /// Suggest the closest URN for a typo. Returns `None` if no close match.
+    /// Prefers matches in the same package prefix (e.g. `std/media/v1`).
+    pub fn suggest(&self, urn: &str) -> Option<&str> {
+        let target_name = urn_short_name(urn).to_lowercase();
+        let target_prefix = urn.split('[').next().unwrap_or(urn);
+        let target_prefix = target_prefix.rsplit_once('/').map(|(p, _)| p);
+        self.types
+            .keys()
+            .filter_map(|k| {
+                let name = urn_short_name(k).to_lowercase();
+                let dist = edit_distance(&target_name, &name);
+                (dist <= 2).then(|| {
+                    let prefix_penalty = if target_prefix == k.rsplit_once('/').map(|(p, _)| p) {
+                        0
+                    } else {
+                        100
+                    };
+                    (k.as_str(), dist + prefix_penalty)
+                })
+            })
+            .min_by_key(|&(_, score)| score)
+            .map(|(k, _)| k)
+    }
+}
+
+/// Walk a directory tree yielding file paths lazily.
+///
+/// Depth-limited to 8 levels. Uses `file_type()` to avoid following symlinks.
+fn walkdir_iter(dir: &Path) -> Vec<std::path::PathBuf> {
+    const MAX_DEPTH: u32 = 8;
+    let mut result = Vec::new();
+    let mut stack: Vec<(std::path::PathBuf, u32)> = vec![(dir.to_path_buf(), 0)];
+    while let Some((path, depth)) = stack.pop() {
+        if depth >= MAX_DEPTH {
+            continue;
+        }
+        let Ok(entries) = std::fs::read_dir(&path) else {
+            continue;
+        };
+        for entry in entries.flatten() {
+            let is_dir = entry.file_type().map(|t| t.is_dir()).unwrap_or(false);
+            if is_dir {
+                stack.push((entry.path(), depth + 1));
+            } else {
+                result.push(entry.path());
+            }
+        }
+    }
+    result
+}
+
+impl Default for TypeRegistry {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+/// Simple edit distance (Levenshtein) for typo suggestions.
+/// Returns `usize::MAX` for inputs longer than 256 characters to prevent DoS.
+///
+/// The 256-character cap is measured in [`char`]s, not bytes, so a multibyte
+/// input well under 256 characters is still scored rather than rejected.
+///
+/// ```
+/// use dora_core::types::edit_distance;
+///
+/// assert_eq!(edit_distance("kitten", "sitting"), 3);
+/// assert_eq!(edit_distance("image", "image"), 0);
+/// // Inputs longer than 256 characters short-circuit to `usize::MAX`:
+/// assert_eq!(edit_distance(&"a".repeat(257), "a"), usize::MAX);
+/// ```
+pub fn edit_distance(a: &str, b: &str) -> usize {
+    // Guard on character count, not byte length: the DP matrix below is sized
+    // by `chars().count()`, so that is the quantity the DoS cap must bound. A
+    // byte-length check also over-rejects a multibyte input that is well under
+    // 256 characters (>256 bytes), silently suppressing an otherwise valid typo
+    // suggestion — contrary to this function's documented "256 characters".
+    // `take(257)` keeps the guard bounded: it stops scanning after 257
+    // characters rather than walking a hostile, arbitrarily long string in
+    // full, and it runs before the `collect`s below so an oversized input
+    // never allocates the `Vec<char>`.
+    if a.chars().take(257).count() > 256 || b.chars().take(257).count() > 256 {
+        return usize::MAX;
+    }
+    let a: Vec<char> = a.chars().collect();
+    let b: Vec<char> = b.chars().collect();
+    let mut dp = vec![vec![0usize; b.len() + 1]; a.len() + 1];
+    for (i, row) in dp.iter_mut().enumerate() {
+        row[0] = i;
+    }
+    for (j, val) in dp[0].iter_mut().enumerate() {
+        *val = j;
+    }
+    for i in 1..=a.len() {
+        for j in 1..=b.len() {
+            let cost = if a[i - 1] == b[j - 1] { 0 } else { 1 };
+            dp[i][j] = (dp[i - 1][j] + 1)
+                .min(dp[i][j - 1] + 1)
+                .min(dp[i - 1][j - 1] + cost);
+        }
+    }
+    dp[a.len()][b.len()]
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn registry_resolves_known_urns() {
+        let reg = TypeRegistry::new();
+        assert!(reg.resolve("std/core/v1/Float32").is_some());
+        assert!(reg.resolve("std/media/v1/Image").is_some());
+        assert!(reg.resolve("std/vision/v1/BoundingBox").is_some());
+    }
+
+    #[test]
+    fn registry_returns_none_for_unknown() {
+        let reg = TypeRegistry::new();
+        assert!(reg.resolve("std/core/v1/NonExistent").is_none());
+        assert!(reg.resolve("custom/MyType").is_none());
+    }
+
+    #[test]
+    fn all_embedded_yaml_loads() {
+        // TypeRegistry::new() panics if any YAML is invalid
+        let reg = TypeRegistry::new();
+        assert!(reg.types.len() > 10);
+    }
+
+    #[test]
+    fn suggest_finds_typo() {
+        let reg = TypeRegistry::new();
+        let suggestion = reg.suggest("std/media/v1/Imag");
+        assert_eq!(suggestion, Some("std/media/v1/Image"));
+    }
+
+    #[test]
+    fn suggest_returns_none_for_unrelated() {
+        let reg = TypeRegistry::new();
+        assert!(reg.suggest("std/core/v1/Xyzzy").is_none());
+    }
+
+    #[test]
+    fn edit_distance_guards_on_characters_not_bytes() {
+        // Two 200-character multibyte strings are >256 bytes but well under the
+        // documented 256-character cap, so they must be measured, not bailed on
+        // with `usize::MAX`. `é` is 2 bytes, so 200 of them is 400 bytes.
+        let a: String = "é".repeat(200);
+        let mut b: String = "é".repeat(199);
+        b.push('e'); // one differing character
+        assert!(a.len() > 256 && b.len() > 256, "inputs exceed 256 bytes");
+        assert_eq!(edit_distance(&a, &b), 1);
+
+        // Genuinely over the character cap still short-circuits.
+        let long: String = "a".repeat(257);
+        assert_eq!(edit_distance(&long, "a"), usize::MAX);
+    }
+
+    #[test]
+    fn type_def_has_arrow_field() {
+        let reg = TypeRegistry::new();
+        let def = reg.resolve("std/core/v1/Float32").unwrap();
+        assert_eq!(def.arrow, "Float32");
+    }
+
+    #[test]
+    fn arrow_data_type_primitives() {
+        let reg = TypeRegistry::new();
+        assert_eq!(
+            reg.resolve_arrow_type("std/core/v1/Float32"),
+            Some(DataType::Float32)
+        );
+        assert_eq!(
+            reg.resolve_arrow_type("std/core/v1/UInt64"),
+            Some(DataType::UInt64)
+        );
+        assert_eq!(
+            reg.resolve_arrow_type("std/core/v1/String"),
+            Some(DataType::Utf8)
+        );
+        assert_eq!(
+            reg.resolve_arrow_type("std/core/v1/Bool"),
+            Some(DataType::Boolean)
+        );
+        assert_eq!(
+            reg.resolve_arrow_type("std/core/v1/Bytes"),
+            Some(DataType::LargeBinary)
+        );
+    }
+
+    #[test]
+    fn arrow_data_type_complex_returns_none() {
+        let reg = TypeRegistry::new();
+        assert_eq!(reg.resolve_arrow_type("std/media/v1/Image"), None);
+        assert_eq!(reg.resolve_arrow_type("std/math/v1/Vector3"), None);
+    }
+
+    #[test]
+    fn arrow_data_type_unknown_urn_returns_none() {
+        let reg = TypeRegistry::new();
+        assert_eq!(reg.resolve_arrow_type("std/core/v1/NonExistent"), None);
+    }
+
+    // --- Phase 2: parse_urn tests ---
+
+    #[test]
+    fn parse_urn_no_params() {
+        let parsed = parse_urn("std/media/v1/Image").unwrap();
+        assert_eq!(parsed.base, "std/media/v1/Image");
+        assert!(parsed.params.is_empty());
+    }
+
+    #[test]
+    fn parse_urn_single_param() {
+        let parsed = parse_urn("std/media/v1/AudioFrame[sample_type=f32]").unwrap();
+        assert_eq!(parsed.base, "std/media/v1/AudioFrame");
+        assert_eq!(parsed.params.len(), 1);
+        assert_eq!(parsed.params["sample_type"], "f32");
+    }
+
+    #[test]
+    fn parse_urn_multiple_params() {
+        let parsed = parse_urn("std/media/v1/AudioFrame[sample_type=f32,channels=2]").unwrap();
+        assert_eq!(parsed.base, "std/media/v1/AudioFrame");
+        assert_eq!(parsed.params.len(), 2);
+        assert_eq!(parsed.params["sample_type"], "f32");
+        assert_eq!(parsed.params["channels"], "2");
+    }
+
+    #[test]
+    fn parse_urn_malformed() {
+        assert!(parse_urn("").is_none());
+        assert!(parse_urn("foo[").is_none()); // no closing bracket
+        assert!(parse_urn("foo[]").is_none()); // empty brackets
+        assert!(parse_urn("foo[=val]").is_none()); // empty key
+        assert!(parse_urn("foo[key=]").is_none()); // empty value
+    }
+
+    #[test]
+    fn parse_urn_rejects_empty_base() {
+        // A `[params]` block with no base type is malformed: the bracket is at
+        // offset 0, so the base is empty. It must be rejected, not accepted as a
+        // `ParsedUrn { base: "", .. }`.
+        assert!(parse_urn("[sample_type=f32]").is_none());
+        assert!(parse_urn("[a=1,b=2]").is_none());
+
+        // Before the fix, both parsed to an empty base with disjoint params, so
+        // `params_agree` treated them as a wildcard match — two unrelated
+        // empty-base strings spuriously `types_match`. Now they are unparseable
+        // and fall back to exact string equality, so they no longer match.
+        assert!(!types_match("[a=1]", "[b=2]"));
+    }
+
+    #[test]
+    fn types_match_exact() {
+        assert!(types_match("std/core/v1/Float32", "std/core/v1/Float32"));
+    }
+
+    #[test]
+    fn types_match_wildcard() {
+        assert!(types_match(
+            "std/media/v1/AudioFrame",
+            "std/media/v1/AudioFrame[sample_type=f32]"
+        ));
+        assert!(types_match(
+            "std/media/v1/AudioFrame[sample_type=f32]",
+            "std/media/v1/AudioFrame"
+        ));
+    }
+
+    #[test]
+    fn types_match_param_mismatch() {
+        assert!(!types_match(
+            "std/media/v1/AudioFrame[sample_type=f32]",
+            "std/media/v1/AudioFrame[sample_type=i16]"
+        ));
+    }
+
+    #[test]
+    fn types_match_different_base() {
+        assert!(!types_match("std/core/v1/Float32", "std/core/v1/Float64"));
+    }
+
+    // --- Fallback path: parse_urn returns None ---
+    //
+    // The two `let Some(...) else { return a == b; }` branches in
+    // types_match() were uncovered (caught by mutation testing: mutants at
+    // lines 168 and 171 escaped the existing suite). These tests exercise
+    // empty-string and malformed-URN inputs so that the fallback equality
+    // check is both reachable and semantically load-bearing.
+
+    #[test]
+    fn types_match_first_unparseable_falls_back_to_equality() {
+        // `a` is empty -> parse_urn(a) is None -> falls back to a == b.
+        // These assertions fail for both the unmutated code and mutations
+        // that would change `==` to `!=` only if the result differs.
+        assert!(!types_match("", "std/core/v1/Float32"));
+        assert!(!types_match("std/core/v1/Float32[", "std/core/v1/Float32"));
+    }
+
+    #[test]
+    fn types_match_second_unparseable_falls_back_to_equality() {
+        // `a` parses, `b` does not -> falls back to a == b (= false since
+        // a is a valid URN and b is empty/malformed).
+        assert!(!types_match("std/core/v1/Float32", ""));
+        assert!(!types_match("std/core/v1/Float32", "std/core/v1/Float32["));
+    }
+
+    #[test]
+    fn types_match_both_unparseable_equal_strings() {
+        // Both fail to parse but are byte-identical: fallback says true.
+        assert!(types_match("", ""));
+        assert!(types_match("malformed[", "malformed["));
+    }
+
+    #[test]
+    fn types_match_both_unparseable_different_strings() {
+        // Both fail to parse and differ: fallback says false.
+        assert!(!types_match("malformed[", "other["));
+        assert!(!types_match("", "[empty-base]"));
+    }
+
+    // --- Phase 4: compatibility graph tests ---
+
+    #[test]
+    fn compat_uint8_to_uint32() {
+        let g = CompatibilityGraph::new(&[]);
+        assert!(g.is_compatible("std/core/v1/UInt8", "std/core/v1/UInt32"));
+    }
+
+    #[test]
+    fn compat_uint8_to_uint64_transitive() {
+        let g = CompatibilityGraph::new(&[]);
+        assert!(g.is_compatible("std/core/v1/UInt8", "std/core/v1/UInt64"));
+    }
+
+    #[test]
+    fn compat_uint8_to_int32_mismatch() {
+        let g = CompatibilityGraph::new(&[]);
+        assert!(!g.is_compatible("std/core/v1/UInt8", "std/core/v1/Int32"));
+    }
+
+    #[test]
+    fn compat_any_to_bytes() {
+        let g = CompatibilityGraph::new(&[]);
+        assert!(g.is_compatible("std/media/v1/Image", "std/core/v1/Bytes"));
+        assert!(g.is_compatible("std/core/v1/Float32", "std/core/v1/Bytes"));
+    }
+
+    #[test]
+    fn compat_depth_limit() {
+        // Create a chain of 4: A->B->C->D->E
+        let rules = vec![
+            TypeRule {
+                from: "a/A".into(),
+                to: "a/B".into(),
+            },
+            TypeRule {
+                from: "a/B".into(),
+                to: "a/C".into(),
+            },
+            TypeRule {
+                from: "a/C".into(),
+                to: "a/D".into(),
+            },
+            TypeRule {
+                from: "a/D".into(),
+                to: "a/E".into(),
+            },
+        ];
+        let g = CompatibilityGraph::new(&rules);
+        assert!(g.is_compatible("a/A", "a/C")); // depth 2
+        assert!(g.is_compatible("a/A", "a/D")); // depth 3
+        assert!(!g.is_compatible("a/A", "a/E")); // depth 4 — exceeds limit
+    }
+
+    #[test]
+    fn compat_user_defined_rule() {
+        let rules = vec![TypeRule {
+            from: "myproject/SensorV1".into(),
+            to: "myproject/SensorV2".into(),
+        }];
+        let g = CompatibilityGraph::new(&rules);
+        assert!(g.is_compatible("myproject/SensorV1", "myproject/SensorV2"));
+    }
+
+    // --- Phase 5: metadata pattern tests ---
+
+    #[test]
+    fn pattern_service_server() {
+        let keys = pattern_metadata_keys("service-server").unwrap();
+        assert!(keys.contains(&"request_id"));
+    }
+
+    #[test]
+    fn pattern_action_server() {
+        let keys = pattern_metadata_keys("action-server").unwrap();
+        assert!(keys.contains(&"goal_id"));
+        assert!(keys.contains(&"goal_status"));
+    }
+
+    #[test]
+    fn pattern_unknown() {
+        assert!(pattern_metadata_keys("unknown").is_none());
+    }
+
+    // --- Phase 6: schema compatibility tests ---
+
+    #[test]
+    fn schema_superset_compatible() {
+        let expected = Schema::new(vec![Field::new("x", DataType::Float64, true)]);
+        let actual = Schema::new(vec![
+            Field::new("x", DataType::Float64, true),
+            Field::new("y", DataType::Float64, true),
+        ]);
+        assert!(schema_compatible(&expected, &actual).is_ok());
+    }
+
+    #[test]
+    fn schema_missing_field() {
+        let expected = Schema::new(vec![
+            Field::new("x", DataType::Float64, true),
+            Field::new("y", DataType::Float64, true),
+        ]);
+        let actual = Schema::new(vec![Field::new("x", DataType::Float64, true)]);
+        let err = schema_compatible(&expected, &actual).unwrap_err();
+        assert!(matches!(err, SchemaError::MissingField { .. }));
+    }
+
+    #[test]
+    fn schema_wrong_type() {
+        let expected = Schema::new(vec![Field::new("x", DataType::Float64, true)]);
+        let actual = Schema::new(vec![Field::new("x", DataType::Int32, true)]);
+        let err = schema_compatible(&expected, &actual).unwrap_err();
+        assert!(matches!(err, SchemaError::TypeMismatch { .. }));
+    }
+
+    // --- Phase 7: user-defined types tests ---
+
+    #[test]
+    fn load_user_types_from_dir() {
+        let dir = tempfile::tempdir().unwrap();
+        let pkg_dir = dir.path().join("myproject").join("sensors");
+        std::fs::create_dir_all(&pkg_dir).unwrap();
+        std::fs::write(
+            pkg_dir.join("v1.yml"),
+            "types:\n  MySensor:\n    arrow: Struct\n    description: test\n",
+        )
+        .unwrap();
+        let mut reg = TypeRegistry::new();
+        let count = reg.load_from_dir(dir.path()).unwrap();
+        assert_eq!(count, 1);
+        assert!(reg.resolve("myproject/sensors/v1/MySensor").is_some());
+    }
+
+    #[test]
+    fn load_user_types_std_prefix_rejected() {
+        let dir = tempfile::tempdir().unwrap();
+        let pkg_dir = dir.path().join("std").join("foo");
+        std::fs::create_dir_all(&pkg_dir).unwrap();
+        std::fs::write(
+            pkg_dir.join("v1.yml"),
+            "types:\n  Foo:\n    arrow: Struct\n",
+        )
+        .unwrap();
+        let mut reg = TypeRegistry::new();
+        let err = reg.load_from_dir(dir.path());
+        assert!(err.is_err());
+        assert!(err.unwrap_err().contains("std/"));
+    }
+
+    // --- Phase 2: resolve parameterized URN ---
+
+    #[test]
+    fn resolve_parameterized_urn() {
+        let reg = TypeRegistry::new();
+        // AudioFrame exists as std/media/v1/AudioFrame
+        let def = reg.resolve("std/media/v1/AudioFrame[sample_type=f32]");
+        assert!(def.is_some());
+        assert_eq!(def.unwrap().arrow, "Struct");
+    }
+
+    // --- resolve_field_type tests ---
+
+    #[test]
+    fn resolve_field_type_primitive() {
+        let reg = TypeRegistry::new();
+        assert_eq!(
+            resolve_field_type("Float64", &reg, 0),
+            Some(DataType::Float64)
+        );
+        assert_eq!(resolve_field_type("Utf8", &reg, 0), Some(DataType::Utf8));
+    }
+
+    #[test]
+    fn resolve_field_type_list() {
+        let reg = TypeRegistry::new();
+        let dt = resolve_field_type("List<Float32>", &reg, 0).unwrap();
+        assert!(matches!(dt, DataType::LargeList(_)));
+        if let DataType::LargeList(field) = &dt {
+            assert_eq!(field.data_type(), &DataType::Float32);
+        }
+    }
+
+    #[test]
+    fn resolve_field_type_struct_ref() {
+        let reg = TypeRegistry::new();
+        let dt = resolve_field_type("Vector3", &reg, 0).unwrap();
+        if let DataType::Struct(fields) = &dt {
+            assert_eq!(fields.len(), 3);
+            assert_eq!(fields[0].name(), "x");
+            assert_eq!(fields[0].data_type(), &DataType::Float64);
+        } else {
+            panic!("expected Struct, got {dt:?}");
+        }
+    }
+
+    #[test]
+    fn resolve_field_type_full_urn() {
+        let reg = TypeRegistry::new();
+        let dt = resolve_field_type("std/math/v1/Quaternion", &reg, 0).unwrap();
+        if let DataType::Struct(fields) = &dt {
+            assert_eq!(fields.len(), 4); // x, y, z, w
+        } else {
+            panic!("expected Struct");
+        }
+    }
+
+    #[test]
+    fn resolve_field_type_nested_list_struct() {
+        let reg = TypeRegistry::new();
+        let dt = resolve_field_type("List<BoundingBox>", &reg, 0).unwrap();
+        if let DataType::LargeList(field) = &dt {
+            if let DataType::Struct(fields) = field.data_type() {
+                assert_eq!(fields.len(), 6); // x, y, width, height, confidence, label
+            } else {
+                panic!("expected Struct inside LargeList");
+            }
+        } else {
+            panic!("expected LargeList");
+        }
+    }
+
+    #[test]
+    fn resolve_field_type_nested_list_of_list() {
+        let reg = TypeRegistry::new();
+        let dt = resolve_field_type("List<List<Float32>>", &reg, 0).unwrap();
+        if let DataType::LargeList(outer) = &dt {
+            if let DataType::LargeList(inner) = outer.data_type() {
+                assert_eq!(inner.data_type(), &DataType::Float32);
+            } else {
+                panic!("expected LargeList inside LargeList");
+            }
+        } else {
+            panic!("expected LargeList");
+        }
+    }
+
+    #[test]
+    fn resolve_field_type_unknown_returns_none() {
+        let reg = TypeRegistry::new();
+        assert!(resolve_field_type("CompletelyUnknown", &reg, 0).is_none());
+    }
+
+    #[test]
+    fn resolve_field_type_depth_limit() {
+        // Should return None, not panic
+        let reg = TypeRegistry::new();
+        assert!(resolve_field_type("Float64", &reg, MAX_TYPE_DEPTH + 1).is_none());
+    }
+
+    #[test]
+    fn resolve_short_name_unique() {
+        let reg = TypeRegistry::new();
+        let def = reg.resolve_short_name("Vector3");
+        assert!(def.is_some());
+        assert_eq!(def.unwrap().arrow, "Struct");
+    }
+
+    #[test]
+    fn resolve_short_name_ambiguous() {
+        let dir = tempfile::tempdir().unwrap();
+        let pkg_dir = dir.path().join("myproject").join("math");
+        std::fs::create_dir_all(&pkg_dir).unwrap();
+        std::fs::write(
+            pkg_dir.join("v1.yml"),
+            "types:\n  Vector3:\n    arrow: Struct\n    description: duplicate\n",
+        )
+        .unwrap();
+        let mut reg = TypeRegistry::new();
+        reg.load_from_dir(dir.path()).unwrap();
+        // Two types now end in /Vector3 — should return None
+        assert!(reg.resolve_short_name("Vector3").is_none());
+    }
+
+    #[test]
+    fn resolve_short_name_unknown() {
+        let reg = TypeRegistry::new();
+        assert!(reg.resolve_short_name("Nonexistent").is_none());
+    }
+
+    // --- schema_with_registry tests ---
+
+    #[test]
+    fn pose_schema_resolves_with_registry() {
+        let reg = TypeRegistry::new();
+        let def = reg.resolve("std/math/v1/Pose").unwrap();
+        let schema = def.to_arrow_schema_with_registry(&reg).unwrap();
+        assert_eq!(schema.fields().len(), 2);
+        assert_eq!(schema.fields()[0].name(), "position");
+        assert_eq!(schema.fields()[1].name(), "orientation");
+        // position should be Struct with x, y, z
+        if let DataType::Struct(fields) = schema.fields()[0].data_type() {
+            assert_eq!(fields.len(), 3);
+        } else {
+            panic!("expected Struct for position field");
+        }
+    }
+
+    #[test]
+    fn twist_schema_resolves_with_registry() {
+        let reg = TypeRegistry::new();
+        let def = reg.resolve("std/control/v1/Twist").unwrap();
+        let schema = def.to_arrow_schema_with_registry(&reg).unwrap();
+        assert_eq!(schema.fields().len(), 2);
+        assert_eq!(schema.fields()[0].name(), "linear");
+        assert_eq!(schema.fields()[1].name(), "angular");
+    }
+
+    #[test]
+    fn joint_state_schema_resolves_with_registry() {
+        let reg = TypeRegistry::new();
+        let def = reg.resolve("std/control/v1/JointState").unwrap();
+        let schema = def.to_arrow_schema_with_registry(&reg).unwrap();
+        assert_eq!(schema.fields().len(), 4);
+        // All fields should be LargeList
+        for field in schema.fields() {
+            assert!(
+                matches!(field.data_type(), DataType::LargeList(_)),
+                "expected LargeList for field {}, got {:?}",
+                field.name(),
+                field.data_type()
+            );
+        }
+    }
+
+    #[test]
+    fn odometry_schema_resolves_nested() {
+        let reg = TypeRegistry::new();
+        let def = reg.resolve("std/control/v1/Odometry").unwrap();
+        let schema = def.to_arrow_schema_with_registry(&reg).unwrap();
+        assert_eq!(schema.fields().len(), 3); // pose, twist, frame_id
+        // pose is Struct(position: Struct, orientation: Struct)
+        if let DataType::Struct(pose_fields) = schema.fields()[0].data_type() {
+            assert_eq!(pose_fields.len(), 2);
+        } else {
+            panic!("expected Struct for pose");
+        }
+        assert_eq!(schema.fields()[2].data_type(), &DataType::Utf8);
+    }
+
+    #[test]
+    fn detection_schema_resolves_with_registry() {
+        let reg = TypeRegistry::new();
+        let def = reg.resolve("std/vision/v1/Detection").unwrap();
+        let schema = def.to_arrow_schema_with_registry(&reg).unwrap();
+        assert_eq!(schema.fields().len(), 1); // boxes
+        assert_eq!(schema.fields()[0].name(), "boxes");
+        if let DataType::LargeList(inner) = schema.fields()[0].data_type() {
+            assert!(matches!(inner.data_type(), DataType::Struct(_)));
+        } else {
+            panic!("expected LargeList for boxes");
+        }
+    }
+
+    #[test]
+    fn segmentation_schema_resolves_with_registry() {
+        let reg = TypeRegistry::new();
+        let def = reg.resolve("std/vision/v1/Segmentation").unwrap();
+        let schema = def.to_arrow_schema_with_registry(&reg).unwrap();
+        assert_eq!(schema.fields().len(), 5);
+    }
+
+    #[test]
+    fn all_std_struct_types_have_schemas() {
+        let reg = TypeRegistry::new();
+        let struct_types = [
+            "std/math/v1/Vector3",
+            "std/math/v1/Quaternion",
+            "std/math/v1/Pose",
+            "std/math/v1/Transform",
+            "std/control/v1/Twist",
+            "std/control/v1/JointState",
+            "std/control/v1/Odometry",
+            "std/media/v1/Image",
+            "std/media/v1/PointCloud",
+            "std/media/v1/AudioFrame",
+            "std/vision/v1/BoundingBox",
+            "std/vision/v1/Detection",
+            "std/vision/v1/Segmentation",
+        ];
+        for urn in struct_types {
+            let def = reg.resolve(urn).unwrap_or_else(|| panic!("missing {urn}"));
+            assert!(
+                def.to_arrow_schema_with_registry(&reg).is_some(),
+                "{urn} has no resolvable schema"
+            );
+        }
+    }
+
+    #[test]
+    fn unresolvable_nested_field_returns_none() {
+        // A struct with an unknown nested type should fail closed (return None),
+        // not produce a partial schema.
+        let def = TypeDef {
+            arrow: "Struct".to_string(),
+            description: None,
+            params: vec![],
+            fields: vec![
+                FieldDef {
+                    name: "good".to_string(),
+                    r#type: "Float64".to_string(),
+                    nullable: true,
+                },
+                FieldDef {
+                    name: "bad".to_string(),
+                    r#type: "Nonexistent".to_string(),
+                    nullable: true,
+                },
+            ],
+            metadata: vec![],
+        };
+        let reg = TypeRegistry::new();
+        assert!(
+            def.to_arrow_schema_with_registry(&reg).is_none(),
+            "schema with unresolvable field should return None"
+        );
+    }
+
+    #[test]
+    fn ambiguous_short_name_in_nested_field_returns_none() {
+        let dir = tempfile::tempdir().unwrap();
+        let pkg_dir = dir.path().join("myproject").join("math");
+        std::fs::create_dir_all(&pkg_dir).unwrap();
+        std::fs::write(
+            pkg_dir.join("v1.yml"),
+            "types:\n  Vector3:\n    arrow: Struct\n    description: dup\n    fields:\n      - name: a\n        type: Float64\n",
+        )
+        .unwrap();
+        let mut reg = TypeRegistry::new();
+        reg.load_from_dir(dir.path()).unwrap();
+
+        // A struct referencing the now-ambiguous "Vector3" short name
+        let def = TypeDef {
+            arrow: "Struct".to_string(),
+            description: None,
+            params: vec![],
+            fields: vec![FieldDef {
+                name: "pos".to_string(),
+                r#type: "Vector3".to_string(),
+                nullable: true,
+            }],
+            metadata: vec![],
+        };
+        assert!(
+            def.to_arrow_schema_with_registry(&reg).is_none(),
+            "ambiguous short name should fail closed"
+        );
+    }
+
+    #[test]
+    fn parameterized_struct_schema_resolves() {
+        let reg = TypeRegistry::new();
+        // AudioFrame has fields + params; schema should resolve via registry
+        let def = reg
+            .resolve("std/media/v1/AudioFrame[sample_type=f32]")
+            .unwrap();
+        let schema = def.to_arrow_schema_with_registry(&reg).unwrap();
+        assert_eq!(schema.fields().len(), 3); // sample_rate, channels, data
+    }
+
+    #[test]
+    fn field_type_resolves_bounds_list_nesting() {
+        let reg = TypeRegistry::new();
+        // shallow nesting still resolves
+        assert!(reg.field_type_resolves("List<List<Float32>>"));
+        // a pathologically deep `List<…>` from an untrusted manifest must be
+        // rejected (return false), not overflow the stack
+        let deep = format!("{}Float32{}", "List<".repeat(100_000), ">".repeat(100_000));
+        assert!(!reg.field_type_resolves(&deep));
+    }
+
+    #[test]
+    fn padded_field_type_gate_and_schema_agree() {
+        // Regression: `field_type_resolves` trims but `resolve_field_type` did
+        // not, so a whitespace-padded field type (e.g. a quoted `"Float32 "`
+        // in YAML) passed the admission gate yet failed to materialize into a
+        // schema — silently skipping the schema-compatibility check. Both must
+        // now agree.
+        let reg = TypeRegistry::new();
+
+        // The gate accepts the padded primitive and its padded `List<…>` form.
+        assert!(reg.field_type_resolves("Float32 "));
+        assert!(reg.field_type_resolves(" List<Float32> "));
+
+        let def = TypeDef {
+            arrow: "Struct".to_string(),
+            description: None,
+            params: vec![],
+            fields: vec![
+                FieldDef {
+                    name: "x".to_string(),
+                    r#type: "Float32 ".to_string(),
+                    nullable: true,
+                },
+                FieldDef {
+                    name: "xs".to_string(),
+                    r#type: " List<Float32> ".to_string(),
+                    nullable: true,
+                },
+            ],
+            metadata: vec![],
+        };
+
+        // …and the materializer now builds the same fields rather than None.
+        let schema = def
+            .to_arrow_schema_with_registry(&reg)
+            .expect("padded field types should build a schema, matching the gate");
+        assert_eq!(schema.fields().len(), 2);
+        assert_eq!(schema.fields()[0].data_type(), &DataType::Float32);
+        assert!(matches!(
+            schema.fields()[1].data_type(),
+            DataType::LargeList(_)
+        ));
+    }
+}

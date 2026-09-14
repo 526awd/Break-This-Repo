@@ -1,0 +1,11 @@
+<!--
+  SPDX-License-Identifier: Apache-2.0
+  SPDX-FileCopyrightText: 2024 The Gleam contributors
+-->
+
+# subdir_ffi
+
+This package is used to check if the compiler properly supports FFI files (such
+as `.mjs`, `.erl` and `.hrl`) in subdirectories.
+
+Test across all targets and runtimes by running `make`.

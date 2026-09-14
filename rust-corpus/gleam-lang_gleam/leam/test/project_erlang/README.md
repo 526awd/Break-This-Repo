@@ -1,0 +1,34 @@
+<!--
+  SPDX-License-Identifier: Apache-2.0
+  SPDX-FileCopyrightText: 2021 The Gleam contributors
+-->
+
+# Project
+
+A test Gleam project.
+
+It covers these features:
+
+- Downloading packages
+  - Specified in config.dependencies
+  - Specified in config.dev_dependencies
+- Importing packages
+  - Specified in config.dependencies
+  - Specified in config.dev_dependencies
+- Compilation of Gleam code
+  - in src
+  - in test
+- Compilation of locally defined Erlang modules
+  - in src
+  - in test
+- Importing of Erlang header files
+  - in src
+  - in test
+- Importing Gleam src code into test
+
+## Quick start
+
+```sh
+gleam run
+gleam test
+```
