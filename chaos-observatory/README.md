@@ -117,3 +117,25 @@ The NUL-delimited tree stream is capped at `--limit` entries (1–1000000). A
 truncated sample is labeled prominently and is not a whole-repository ranking.
 The supplied `atlas.html` records its revision and coverage. Regenerate to a new
 file to obtain a later snapshot. The original metadata survey remains unchanged.
+
+## 奇葩路径展览 / Path portability gallery
+
+```sh
+python3 path_gallery.py .. --limit 1000000 --exhibits 100 --output /tmp/paths.html
+python3 path_gallery.py .. --format json --output /tmp/path-specimens.json
+```
+
+Inspect paths stored in Git without creating, opening, or checking them out.
+The gallery flags long UTF-8 paths/components, deep paths, Windows device names,
+invalid Windows characters, trailing spaces/dots, control/format characters,
+undecodable UTF-8 bytes, and NFC/casefold collisions (including parent directory
+collisions such as `A/x` versus `a/y`). These are heuristics, not a platform
+compatibility certification. See Microsoft's [file naming rules](https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file).
+The 240-byte warning threshold is an exhibit rule, not Windows' UTF-16 limit.
+
+Counts cover the scanned sample and can overlap. `--exhibits` (1–1000) caps only
+displayed specimens, with a representative for each category where space permits.
+Search and category filters operate on those displayed specimens. Scanning and
+exhibit truncation are both reported. Controls and bidirectional formatting are
+escaped visibly; HTML is escaped and never interpreted. JSON exports preserve
+the full selected paths through escapes. `paths.html` is the inaugural snapshot.
