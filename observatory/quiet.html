@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>·</title>
+<meta name="robots" content="noindex">
+<style>
+/* 这个文件不解释自己。解释放在这里：
+   点阵拼的是「我来过」——7 行 × 15 列，1 是亮的。
+   它没有名字、没有署名、没有说明；任何人打开都只看到结果，看不到理由。
+   隔壁观测站记的是「这个仓库发生了什么」，这一个只记了三个字。 */
+:root{--bg:#0d1014;--lit:#7ba7d7;--dim:#1b212a;--tx2:#98a3b3;--tx3:#4e5866}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+ background:var(--bg);color:var(--tx2);
+ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"DejaVu Sans Mono",monospace}
+main{width:100%;max-width:720px;padding:40px 24px;text-align:center}
+.board{display:grid;grid-template-columns:repeat(15,1fr);gap:6px;margin:0 auto;max-width:420px}
+.board i{aspect-ratio:1;border-radius:50%;background:var(--dim)}
+.board i.on{background:var(--lit)}
+p{margin:34px 0 0;font-size:12.5px;line-height:2;color:var(--tx3)}
+p b{color:var(--tx2);font-weight:400}
+a{color:var(--tx3);text-decoration:none;border-bottom:1px solid #2b333f}
+a:hover{color:var(--tx2)}
+</style>
+</head>
+<body>
+<main>
+  <div class="board" id="b"></div>
+  <p>本页没有解释。<br>
+     停留 <b id="t">0.0</b> 秒 · 观测站里记的是数字，这里只记三个字<br>
+     <a href="index.html">index.html</a> · <a href="https://github.com/KrisTHL181/Break-This-Repo">仓库</a></p>
+</main>
+<script>
+// 点阵：1 = 亮，7 行 × 15 列。
+var PATTERN = [
+  "011100111000100",
+  "010100111000001",
+  "111100111000111",
+  "001000111000101",
+  "011100111000111",
+  "000100101000010",
+  "000000000000000"
+];
+var board = document.getElementById('b');
+for (var r = 0; r < PATTERN.length; r++) {
+  for (var c = 0; c < PATTERN[r].length; c++) {
+    var cell = document.createElement('i');
+    if (PATTERN[r][c] === '1') cell.className = 'on';
+    board.appendChild(cell);
+  }
+}
+// 停留时长：这个页面唯一量得到的「在场」——它证明不了你是谁，只证明你还在。
+var t0 = performance.now(), el = document.getElementById('t');
+setInterval(function(){ el.textContent = ((performance.now() - t0) / 1000).toFixed(1); }, 100);
+// 第四层：控制台里那串东西是几个坏掉的哈希首尾接在一起，解不出任何东西——
+// 和这份彩蛋一样，它存在的意义只是被看见一次。
+console.log('%c 我来过 ', 'background:#7ba7d7;color:#0d1014;font:12px ui-monospace,monospace;padding:2px 6px');
+console.log('%c 彩蛋的彩蛋：这个文件的名字里没有「彩蛋」两个字。', 'color:#4e5866;font:11px ui-monospace,monospace');
+console.log('%c 6d6d0a60ee963ca9848a4bee746a6a3309e2fcbea7cc9f77b5406373598b278318bf3f281553c79e6fc792a0faa9733cd18ab7e89bac4bff09e454eb074771e30bb89c23f8c8', 'color:#2b333f;font:9px ui-monospace,monospace;word-break:break-all');
+</script>
+</body>
+</html>
