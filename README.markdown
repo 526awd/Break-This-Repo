@@ -895,6 +895,10 @@ curl http://zzz.1145.lol/v1/chat/completions \
 
 ---
 
+# 一个vrc好友视奸器
+
+[https://github.com/ssldxss/vrcnotifier]
+
 # github 文件加速 
 [https://githubcf.https114514191810lp.edu.eu.org/]
 
