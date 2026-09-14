@@ -7,12 +7,21 @@
 //   3. 磁铁是贯穿主题：徽章左侧一枚小磁铁，"磁力计"吸附进度，入口锚点 call-to-action。
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from 'node:fs';
 
-const ROOT = 'D:/Open/恶搞';
-const ASSETS = `${ROOT}/translations/assets`;
-const langs = JSON.parse(readFileSync(`${ROOT}/tools/languages.json`, 'utf8'));
+import { fileURLToPath } from 'node:url';
+
+// 定位仓库根：脚本可能位于 <root>/tools/（开发工作区）
+// 或 <root>/translations/_tools/（仓库内）。两种布局都要能跑。
+const SCRIPT_DIR = fileURLToPath(new URL('.', import.meta.url)); // 带尾斜杠
+const IN_REPO_TOOLS = /[\\/]_tools[\\/]?$/.test(SCRIPT_DIR);
+const REPO_ROOT = fileURLToPath(new URL(IN_REPO_TOOLS ? '../../' : '../', import.meta.url));
+// 源文件在开发工作区里是 <root>/tools/xxx，在仓库里是 <root>/translations/_tools/xxx
+const KIT = IN_REPO_TOOLS ? REPO_ROOT + 'translations/_tools/' : REPO_ROOT + 'tools/';
+const TRANS = REPO_ROOT + 'translations/';
+const ASSETS = `${TRANS}assets`;
+const langs = JSON.parse(readFileSync(`${KIT}languages.json`, 'utf8'));
 const byCode = new Map(langs.map((l) => [l.code, l]));
 
-const codes = readdirSync(`${ROOT}/translations`)
+const codes = readdirSync(`${REPO_ROOT}translations`)
   .map((f) => /^README\.([a-z]{2})\.md$/.exec(f))
   .filter(Boolean)
   .map((m) => m[1])
@@ -180,7 +189,7 @@ node translations/_tools/gen-portal.mjs     # 重新生成本页与徽章
 <sub>本页与徽章由 <a href="./_tools/gen-portal.mjs"><code>_tools/gen-portal.mjs</code></a> + <a href="./_tools/gen-badges.mjs"><code>_tools/gen-badges.mjs</code></a> 生成 · 徽章为自绘 SVG，不依赖任何外部图床</sub>
 `;
 
-writeFileSync(`${ROOT}/translations/README.md`, portal, 'utf8');
+writeFileSync(`${TRANS}README.md`, portal, 'utf8');
 console.log(`门户页已生成：${DONE}/${TOTAL}，${portal.length} bytes`);
 console.log(`分组：${GROUPS.map(([t, l]) => `${t.split(' / ')[0]}:${l.filter((c) => codes.includes(c)).length}`).join('  ')}`);
 if (rest.length) console.log(`未分组: ${rest.join(' ')}`);
