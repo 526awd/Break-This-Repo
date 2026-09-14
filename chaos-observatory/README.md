@@ -41,3 +41,38 @@ Every reading ends with the same scientifically defensible conclusion:
 
 Future researchers may append observations to `FIELD_NOTES.md`. Please record
 what you saw, not who you think caused it.
+
+## 喵化足迹 / Meow footprint museum
+
+`meow_museum.py` is a separate Git-history exhibit. Unlike the metadata survey
+above, it reads local Git tree and commit objects through Git. It does not read
+working-tree file contents, execute repository code, collect author information,
+follow submodules, or request the network (lazy fetching is disabled).
+
+From this directory, with Python 3.9+ and Git installed:
+
+```sh
+python3 meow_museum.py .. --output /tmp/meow-museum.html
+python3 -m unittest discover -v
+```
+
+Open the generated HTML in a browser. It includes search and status filters,
+works offline, and remains readable with JavaScript disabled. The output path
+must not already exist. No server, packages, or CI changes are required.
+
+An inaugural snapshot is included as `index.html`: download/open it locally
+to visit immediately, or regenerate a new file to observe a later commit.
+
+The default baseline is commit `ac421f58da0ec26c820a87ed7d0a0f63df8d2221`
+(PR #508). Samples are the top-level directories where that commit added a
+`MEOW.md`. A directory is retained if its latest path-history commit is still
+the baseline, revisited if it has a different latest commit, or removed if its
+original path is no longer a Git tree. Renames count as removal at the old path.
+This measures the latest directory change, not whether the note's text survives.
+
+`--revision COMMIT` selects a reproducible snapshot; `--baseline COMMIT` permits
+another compatible event. The baseline must be an ancestor of the snapshot.
+Shallow history, missing objects, and unknown revisions fail explicitly rather
+than producing misleading counts. A complete-history partial clone is usable
+when the needed objects are already local. The page records the snapshot SHA
+and commit time; it is not live and may differ from GitHub's cached presentation.
